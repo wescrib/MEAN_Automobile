@@ -1,0 +1,20 @@
+<p>
+  Welcome {{currentUser.first_name}}
+</p>
+<label for="searchQ">Search</label><input [(ngModel)] = "searchText">
+<table border="1">
+  <tr>
+    <th>Desc</th>
+    <th># of comments</th>
+    <th>Actions</th>
+  </tr>
+  <tr *ngFor="let q of questions | searchQ: searchText">
+    <td>{{q.description}}</td>
+    <td>{{q._answers.length}}</td>
+    <td><a [routerLink]="['/dashboard/post/',q._id]">Show</a></td>
+  </tr>
+</table>
+
+<button [routerLink]="['/dashboard/post']">Ask a Question!</button>
+
+<button (click)="logout()">Logout</button>
