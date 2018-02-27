@@ -59,7 +59,18 @@ class VehicleController {
                 console.log("Server update error");
                 res.json(err);
             }
-            console.log("Server update success", veh)
+            console.log("Server update success", veh);
+            return res.json(veh);
+        });
+    }
+    //GET REVIEWS FOR VEH
+    getVehReviews(req,res){
+        console.log("Sever attempt to get reviews for vehicle");
+        Vehicle.findById(req.params.veh_id).populate({path:"_reviews", model: "Question", populate:{path: "_user", model: "User"}}).exec((err, veh)=>{
+            if(err){
+                return res.json(err);
+            }
+            console.log("Server found vehicle and reviews!")
             return res.json(veh)
         })
     }

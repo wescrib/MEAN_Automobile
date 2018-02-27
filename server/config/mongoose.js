@@ -1,7 +1,7 @@
 var mongoose = require("mongoose");
 var fs = require("fs");
 
-mongoose.connect("mongodb://localhost/QnA_V1");
+mongoose.connect("mongodb://localhost/VEH_V1");
 mongoose.Proise = global.Promise;
 
 let models_path = __dirname + "/../models"

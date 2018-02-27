@@ -45,7 +45,13 @@ var AutoSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         required: [true, "Cannot build vehicle because no one is logged in"],
         ref: "User"
-    }
+    },
+    _reviews: [{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Question"
+        }]
+    
+    
 }, {timestamps: true})
 
 let Vehicle = mongoose.model("Vehicle", AutoSchema);

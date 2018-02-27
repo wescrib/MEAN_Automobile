@@ -13,7 +13,7 @@ module.exports = function(app){
     app.get("/users/show/:id", Users.showOne);
 
     /**************** POSTS ********************/
-    app.post("/reviews/create", Questions.create);
+    app.post("/reviews/create/:veh_id", Questions.create);
     app.get("/reviews/all", Questions.all);
     app.get("/reviews/:id", Questions.oneQuestion)
 
@@ -30,6 +30,7 @@ module.exports = function(app){
     app.get("/vehicle/:veh_id", Vehicle.oneVehicle);
     app.delete("/vehicle/remove/:veh_id", Vehicle.deleteVehicle);
     app.put("/vehicle/update/:veh_id", Vehicle.updateVehicle);
+    app.get("/vehicle/:veh_id/review", Vehicle.getVehReviews);
 
     app.all("*",(req,res,next) => {
         res.sendFile(path.resolve("./public/dist/index.html"))

@@ -6,20 +6,35 @@ var Question = mongoose.model("Question");
 class UsersController {
     create(req, res){
         console.log(req.body)
-        User.find({ email: req.body.email },(err, users) => {
-            if (users.length > 0){
-                return res.json({error: "user is already in the database"});
-            }else{
-                console.log(req.body);
-                User.create(req.body, (err, newUser) => {
+        User.find({}, (err, users)=>{
+            if(users.length == 0){
+                console.log("SERVER: NO USERS FOUND")
+                req.body.accountType = 1;
+                User.create(req.body, (err, admin) => {
                     if(err){
                         return res.json(err);
                     }
-                    req.session.user_id = newUser._id;
-                    return res.json(newUser);
+                    req.session.user_id = admin._id;
+                    console.log("Server create Admin")
+                    return res.json(admin);
+                })
+            }else{
+                User.findOne({ email: req.body.email },(err, user) => {
+                    if (user){
+                        return res.json({error: "user is already in the database"});
+                    }else{
+                        console.log("SERVER: CREATING REGULAR USER");
+                        User.create(req.body, (err, newUser) => {
+                            if(err){
+                                return res.json(err);
+                            }
+                            req.session.user_id = newUser._id;
+                            return res.json(newUser);
+                        })
+                    }
                 })
             }
-        })
+        })    
     }
     authenticate(req,res){
         if(req.body.email == "" || req.body.password == ""){                            //if field for email or pass is blank,

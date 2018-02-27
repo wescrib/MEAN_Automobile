@@ -12,7 +12,11 @@ var AnswerSchema = new mongoose.Schema({
         default:"",
         maxlength: 255
     },
-    like: [{
+    upvote: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User"
+    }],
+    downvote: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: "User"
     }],

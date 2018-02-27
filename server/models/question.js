@@ -20,7 +20,12 @@ var QuestionSchema = new mongoose.Schema ({
     _answers:[{
         type: mongoose.Schema.Types.ObjectId,
         ref: "Answer"
-    }]
+    }],
+    _vehicle: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: [true, "You need a vehicle to write about"],
+        ref: "Vehicle"
+    }
 }, { timestamps: true })
 
 let Question = mongoose.model("Question", QuestionSchema);
