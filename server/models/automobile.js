@@ -48,4 +48,4 @@ var AutoSchema = new mongoose.Schema({
     }
 }, {timestamps: true})
 
-let Auto = mongoose.model("Auto", AutoSchema);
+let Vehicle = mongoose.model("Vehicle", AutoSchema);

@@ -29,21 +29,33 @@ class QuestionController {
             if(err){
                 return res.json({"error":"Cannot locate post"})
             }
-            for(let i=0; i< q._answers.length-1; i++){
-                console.log("LIKE PRE-SORT",q._answers[i].like.length)
-                if(q._answers[i].like.length-1 < q._answers[i+1].like.length-1){
-                    // if(answers[i].like.length == undefined){
-                    //     answers[i].like.length = 0;
-                    // }
-                    let temp=q._answers[i];
-                    q._answers[i] = q._answers[i+1];
-                    q._answers[i+1] = temp;
-                }
-                console.log("NEW ORDER",q._answers[i].like.length)
-            }
+            // for(let i=0; i< q._answers.length-1; i++){
+            //     console.log("LIKE PRE-SORT",q._answers[i].like.length)
+            //     if(q._answers[i].like.length-1 < q._answers[i+1].like.length-1){
+            //         // if(answers[i].like.length == undefined){
+            //         //     answers[i].like.length = 0;
+            //         // }
+            //         let temp=q._answers[i];
+            //         q._answers[i] = q._answers[i+1];
+            //         q._answers[i+1] = temp;
+            //     }
+            //     console.log("NEW ORDER",q._answers[i].like.length)
+            // }
 
             console.log(q)
             return res.json(q)
+        })
+    }
+
+    updateReview(req, res){
+        Question.findByIdAndUpdate({_id: req.params.id},req.body,{upsert:false}, function(err, rev){
+            if(err){
+                console.log("Server update failure")
+                return res.json(err);
+            }else{
+                console.log("Server update success")
+                return res.json(rev)
+            }
         })
     }
 
