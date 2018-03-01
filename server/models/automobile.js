@@ -37,7 +37,7 @@ var AutoSchema = new mongoose.Schema({
     },
     body: {
         type: String,
-        required: true,
+        required: [true, "Body is required"],
         minlength: [3, "Body needs to be at least 3 character"],
         maxlength: [20, "Body is likely not more than 20 characters"]
     },

@@ -12,17 +12,25 @@ module.exports = function(app){
     app.get("/users/all", Users.all);
     app.get("/users/show/:id", Users.showOne);
 
-    /**************** POSTS ********************/
+    /**************** REVIEWS ********************/
     app.post("/reviews/create/:veh_id", Questions.create);
     app.get("/reviews/all", Questions.all);
     app.get("/reviews/:id", Questions.oneQuestion)
+    app.put("/reviews/up/:question_id", Questions.revUp);
+    app.put("/reviews/down/:question_id", Questions.revDown);
+    app.delete("/reviews/delete/:rev_id", Questions.deleteReview);
+    app.put("/reviews/update/:rev_id", Questions.updateReview);
+
 
     /**************** COMMENTS ********************/
 
     app.post("/reviews/:question_id/comment/new", Questions.newAnswer);
     app.get("/comment/:answer_id", Questions.findAnswer);
-    app.put("/comment/up/:id", Questions.upvote);
+    app.put("/comment/up/:id", Questions.commentUp);
+    app.put("/comment/down/:id", Questions.commentDown);
     app.get("/comment/all/:question_id", Questions.getAnswers);
+    app.get("/comment/all", Questions.allComments);
+    app.delete("/comment/delete/:comment_id", Questions.deleteComment)
 
     /**************** VEHICLES ******************/
     app.post("/vehicle/new", Vehicle.createVehicle);

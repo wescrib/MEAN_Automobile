@@ -6,11 +6,29 @@ var QuestionSchema = new mongoose.Schema ({
         type: String,
         required: [true, "Question has no content"],
         minlength: [6, "Question must be at least 6 characters"],
-        maxlength: [255, "Question size has exceeded max (255 chars)"],
+        maxlength: [5000, "Question size has exceeded max (5000 chars)"],
     },
     description: {
         type: String,
-        default: ""
+        required: [true, "Review requires a title"],
+        minlength: [10, "Minimum character length is 10"],
+        maxlength: [100, "Max character lenth is 100"]
+    },
+    upvote: [{
+        type: mongoose.Schema.Types.ObjectId,
+        required: [true, "User is not logged in"],
+        ref: "User"
+    }],
+    downvote: [{
+        type: mongoose.Schema.Types.ObjectId,
+        required: [true, "User is not logged in"],
+        ref: "User"
+    }],
+    rating: {
+        type: Number,
+        required: [true, "You need to rate the vehicle"],
+        min: 1,
+        max: 5
     },
     _user: {
         type: mongoose.Schema.Types.ObjectId,
