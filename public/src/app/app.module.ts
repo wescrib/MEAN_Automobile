@@ -22,6 +22,8 @@ import { SortPipe } from './server/controllers/sort.pipe';
 import { OrderModule } from 'ngx-order-pipe';
 import { VehicleComponent } from './vehicle/vehicle.component';
 import { VehicleCreateComponent } from './vehicle/vehicle-create/vehicle-create.component';
+import { VehicleShowAllComponent } from './vehicle/vehicle-show-all/vehicle-show-all.component';
+import { VehicleShowOneComponent } from './vehicle/vehicle-show-one/vehicle-show-one.component';
 
 
 
@@ -38,7 +40,9 @@ import { VehicleCreateComponent } from './vehicle/vehicle-create/vehicle-create.
     SearchQPipe,
     SortPipe,
     VehicleComponent,
-    VehicleCreateComponent
+    VehicleCreateComponent,
+    VehicleShowAllComponent,
+    VehicleShowOneComponent
   ],
   imports: [
     BrowserModule,

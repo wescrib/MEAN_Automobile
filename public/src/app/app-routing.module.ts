@@ -8,6 +8,7 @@ import { QuestionCreateComponent } from './dashboard/question-create/question-cr
 import { Question } from './server/models/question';
 import { QuestionOneComponent } from './dashboard/question-one/question-one.component';
 import { VehicleCreateComponent } from './vehicle/vehicle-create/vehicle-create.component';
+import { VehicleComponent } from './vehicle/vehicle.component';
 
 const routes: Routes = [
   {
@@ -28,7 +29,7 @@ const routes: Routes = [
   },
   {
     path:"vehicle/build/new",
-    component: VehicleCreateComponent
+    component: VehicleComponent
   }
 ];
 
