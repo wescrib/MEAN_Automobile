@@ -1,2 +1,2 @@
 <h1>VEHICLE INDEX</h1>
-<p *ngFor="let veh of vehicles">{{veh.make.toUpperCase()}}</p>
+<p *ngFor="let veh of vehicles"><a href [routerLink]="['/vehicle/', veh._id]">{{veh.make.toUpperCase()}}</a></p>

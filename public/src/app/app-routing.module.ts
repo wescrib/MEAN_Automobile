@@ -9,6 +9,7 @@ import { Question } from './server/models/question';
 import { QuestionOneComponent } from './dashboard/question-one/question-one.component';
 import { VehicleCreateComponent } from './vehicle/vehicle-create/vehicle-create.component';
 import { VehicleComponent } from './vehicle/vehicle.component';
+import { VehicleShowOneComponent } from './vehicle/vehicle-show-one/vehicle-show-one.component';
 
 const routes: Routes = [
   {
@@ -30,6 +31,10 @@ const routes: Routes = [
   {
     path:"vehicle/build/new",
     component: VehicleComponent
+  },
+  {
+    path:"vehicle/view/:veh_id",
+    component: VehicleShowOneComponent
   }
 ];
 

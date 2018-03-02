@@ -1,7 +1,7 @@
 <button [routerLink]="['/dashboard']">Home</button><button (click)="logout()">Logout</button>
 <h1>QUESTION FORM</h1>
 <form (submit)="createQuestion()">
-  <p><label for="question-description">Description: <br> </label><input type="text" name="description" id="description" class="form-control" required minlength="6" [(ngModel)]="question.description" #qDesc="ngModel"></p>
+  <p><label for="question-description">Title: <br> </label><input type="text" name="description" id="description" class="form-control" required minlength="6" [(ngModel)]="question.description" #qDesc="ngModel"></p>
   <p class="question-content"><label for="question-content">Question: <br> </label><textarea cols="40" rows="10" name="question" id="question" class="form-control" required minlength="6" [(ngModel)]="question.content" #qContent="ngModel"></textarea></p>
       <div *ngIf="qContent.invalid && (qContent.dirty || qContent.touched)" class="alert alert-danger">
         <div *ngIf="qContent.errors.required">
