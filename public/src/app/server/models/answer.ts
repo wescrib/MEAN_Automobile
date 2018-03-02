@@ -2,7 +2,8 @@ export class Answer {
     _id: string;
     content: string;
     description: string;
-    likes: any[];
+    upvote: any[];
+    downvote: any[];
     _user: any;
     _question: any;
 }

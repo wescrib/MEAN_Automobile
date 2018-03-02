@@ -5,4 +5,5 @@ export class User {
     email: string;
     password: string;
     confirm_pw: string;
+    accountType: number;
 }

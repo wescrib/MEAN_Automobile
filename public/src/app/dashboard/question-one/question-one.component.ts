@@ -50,7 +50,7 @@ export class QuestionOneComponent implements OnInit {
 
   like(answer_id){
     console.log("trying to like");
-    this._questionService.like(answer_id, res => this.getPost())
+    this._questionService.upvoteRev(answer_id, res => this.getPost())
   }
   createAnswer(question_id){
     console.log("creating answer in sub-component", this.answer);

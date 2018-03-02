@@ -15,10 +15,13 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ContentComponent } from './dashboard/content/content.component';
 import { QuestionCreateComponent } from './dashboard/question-create/question-create.component';
 import { QuestionService } from './server/controllers/question.service';
+import { VehicleService } from './server/controllers/vehicle.service'
 import { QuestionOneComponent } from './dashboard/question-one/question-one.component';
 import { SearchQPipe } from './server/controllers/search-q.pipe';
 import { SortPipe } from './server/controllers/sort.pipe';
 import { OrderModule } from 'ngx-order-pipe';
+import { VehicleComponent } from './vehicle/vehicle.component';
+import { VehicleCreateComponent } from './vehicle/vehicle-create/vehicle-create.component';
 
 
 
@@ -33,7 +36,9 @@ import { OrderModule } from 'ngx-order-pipe';
     QuestionCreateComponent,
     QuestionOneComponent,
     SearchQPipe,
-    SortPipe
+    SortPipe,
+    VehicleComponent,
+    VehicleCreateComponent
   ],
   imports: [
     BrowserModule,
@@ -45,6 +50,7 @@ import { OrderModule } from 'ngx-order-pipe';
   providers: [
     UserService,
     QuestionService,
+    VehicleService
   ],
   bootstrap: [AppComponent]
 })

@@ -27,12 +27,20 @@ export class QuestionService {
       err => console.log(err)
     );
   }
-  like(id:string,cb){
-    console.log("hit question service, sending to back end");
-    this._http.put("/answer/up/"+id,{}).subscribe(
+
+  upvoteRev(id: string, cb){
+    console.log("SERVICE: REVIEW UPVOTE BEING SENT TO SERVER")
+    this._http.put("/reviews/up/"+id,{}).subscribe(
       res => cb(res.json()),
       err => console.log(err)
     )
+  }
+  downvoteRev(id: string, cb){
+    console.log("SERVICE: REVIEW DOWNVOTE BEING SENT TO SERVER");
+    this._http.put("/reviews/down/"+id,{}).subscribe(
+      res => cb(res.json()),
+      err => console.log(err)
+    );
   }
   createAnswer(answer: Answer, question_id){
     console.log("sending comment to backend", answer);

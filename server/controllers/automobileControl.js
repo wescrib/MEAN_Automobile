@@ -17,8 +17,10 @@ class VehicleController {
             body: req.body.body,
             _user: req.session.user_id}, (err, vehicle)=>{
             if(err){
+                console.log("SERVER: VEHICLE BUILD FAILURE")
                 return res.json(err)
             }
+            console.log("SERVER: VEHICLE BUILD SUCCESS")
             return res.json(vehicle)
         })
     }
@@ -30,7 +32,11 @@ class VehicleController {
     }
     //FIND ONE VEHICLE
     oneVehicle(req,res){
-        Vehicle.findById(req.params.veh_id).populate({path:"_user", model: "User"}).exec((err, vehicle) => {
+        Vehicle.findById(req.params.veh_id)
+        .populate({path:"_user", model: "User"})
+        .populate({path:"_reviews", model: "Question",
+            populate:{path: "_user", model: "User"}})
+        .exec((err, vehicle) => {
             if(err){
                 console.log("Cannot find vehicle by ID")
                 return res.json({"error":"Cannot find vehicle by ID"})

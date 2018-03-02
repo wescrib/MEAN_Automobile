@@ -7,6 +7,7 @@ import { UserCreateComponent } from './user/user-create/user-create.component';
 import { QuestionCreateComponent } from './dashboard/question-create/question-create.component';
 import { Question } from './server/models/question';
 import { QuestionOneComponent } from './dashboard/question-one/question-one.component';
+import { VehicleCreateComponent } from './vehicle/vehicle-create/vehicle-create.component';
 
 const routes: Routes = [
   {
@@ -24,6 +25,10 @@ const routes: Routes = [
   {
     path:"dashboard/post/:id",
     component: QuestionOneComponent
+  },
+  {
+    path:"vehicle/build/new",
+    component: VehicleCreateComponent
   }
 ];
 

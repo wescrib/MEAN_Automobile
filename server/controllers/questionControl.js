@@ -15,8 +15,15 @@ class QuestionController {
                     console.log("SERVER: FAILED TO CREATE REVIEW");
                     return res.json(err);
                 }
-                console.log("SERVER: SUCCESSFULLY CREATED REVIEW");
-                return res.json(review);
+                veh._reviews.push(review);
+                veh.save((err)=>{
+                    if(err){
+                        console.log("SERVER: FAILED TO PUSH REVIEW IN VEHICLE TABLE")
+                    }
+                
+                    console.log("SERVER: SUCCESSFULLY CREATED REVIEW");
+                    return res.json(review);
+                })
             });
         })
     }
