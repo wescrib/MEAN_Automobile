@@ -1,3 +1,16 @@
-<p>
-  vehicle-show-one works!
-</p>
+<h2>{{ vehicle.year }} {{vehicle.make }} {{vehicle.model}}</h2>
+<img class="veh-rep" src="assets\images\filler.jpeg">
+
+<div class="veh-reviews">
+    <div *ngIf="currentUser == null">
+        <p><a href [routerLink]="['/registration']">Sign up</a>/login to write a review</p>
+    </div>
+    <p>There are no reviews yet! Write one <a href [routerLink]="['/review/new/',vehicle._id]">here</a>!</p>
+
+    <div *ngFor="let review of vehicle._reviews">
+        <a href="#">{{review}}</a>
+    </div>
+
+</div>
+
+{{vehicle}}

@@ -61,9 +61,7 @@ class UsersController {
                 return res.json(user);
             })
         }else{
-            return res.json({
-                "status" : false
-            })
+            return null
         }
     }
     logout(req,res){

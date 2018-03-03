@@ -12,7 +12,6 @@ import { UserCreateComponent } from './user/user-create/user-create.component';
 import { UserLoginComponent } from './user/user-login/user-login.component';
 import { UserService } from './server/controllers/user.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { ContentComponent } from './dashboard/content/content.component';
 import { QuestionCreateComponent } from './dashboard/question-create/question-create.component';
 import { QuestionService } from './server/controllers/question.service';
 import { VehicleService } from './server/controllers/vehicle.service'
@@ -35,7 +34,6 @@ import { HeaderNavComponent } from './header-nav/header-nav.component';
     UserCreateComponent,
     UserLoginComponent,
     DashboardComponent,
-    ContentComponent,
     QuestionCreateComponent,
     QuestionOneComponent,
     SearchQPipe,

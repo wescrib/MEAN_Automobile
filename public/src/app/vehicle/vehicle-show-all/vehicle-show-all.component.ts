@@ -42,7 +42,6 @@ export class VehicleShowAllComponent implements OnInit {
   vehList(){
     console.log("SUBCOMPONENT: SENDING REQUEST TO SERVICE FOR LIST OF VEHICLES");
     this._vS.vehIndex((vehicles)=> this.vehicles = vehicles);
-    
   }
 
 }

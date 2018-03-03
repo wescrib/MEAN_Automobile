@@ -28,12 +28,27 @@ export class VehicleShowOneComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.subscription = this._route.params.subscribe(params => this.veh_id = params.veh_id)
+    this.subscription = this._route.params.subscribe(params => this.veh_id = params.veh_id);
+    this.getOneVeh();
+    this.currentUser;
+    this.inSession();
+
   }
 
   getOneVeh(){
     console.log("SUBCOMPONENT: SENDING INFO TO SERVICE");
     this._vS.getOneVeh(this.veh_id, vehicle => this.vehicle = vehicle);
+    console.log("NUMBER OF REVIEWS", this.vehicle._reviews);
+  }
+
+  inSession(){
+    this._uS.getUser().subscribe(
+      res => {
+        console.log(res.json(),"IS LOGGED IN");
+        this.currentUser = res.json();
+        console.log("NAVIGATION",this.currentUser)
+      }
+    )
   }
 
 }

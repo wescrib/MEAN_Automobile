@@ -10,32 +10,40 @@ import { QuestionOneComponent } from './dashboard/question-one/question-one.comp
 import { VehicleCreateComponent } from './vehicle/vehicle-create/vehicle-create.component';
 import { VehicleComponent } from './vehicle/vehicle.component';
 import { VehicleShowOneComponent } from './vehicle/vehicle-show-one/vehicle-show-one.component';
+import { HeaderNavComponent } from './header-nav/header-nav.component';
 
 const routes: Routes = [
   {
-    path: "",
+    path: "registration",
     component: UserComponent,
   },
   {
-    path:"dashboard",
-    component: DashboardComponent,
+    path:"",
+    component: HeaderNavComponent,
+    children: [
+      {path:"dashboard", component: DashboardComponent},
+      {path:"", component: VehicleComponent},
+      {path:"vehicle/view/:veh_id", component: VehicleShowOneComponent},
+      {path:"review/new/:veh_id", component: QuestionCreateComponent}],
+
+    // component: DashboardComponent,
   },
-  {
-    path:"dashboard/post",
-    component: QuestionCreateComponent
-  },
-  {
-    path:"dashboard/post/:id",
-    component: QuestionOneComponent
-  },
-  {
-    path:"vehicle/build/new",
-    component: VehicleComponent
-  },
-  {
-    path:"vehicle/view/:veh_id",
-    component: VehicleShowOneComponent
-  }
+  // {
+  //   path:"post/new/:veh_id",
+  //   component: QuestionCreateComponent
+  // },
+  // {
+  //   path:"dashboard/post/:id",
+  //   component: QuestionOneComponent
+  // },
+  // {
+  //   path:"vehicle/build/new",
+  //   component: VehicleComponent
+  // },
+  // {
+  //   path:"vehicle/view/:veh_id",
+  //   component: VehicleShowOneComponent
+  // }
 ];
 
 @NgModule({

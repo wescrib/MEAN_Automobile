@@ -1,4 +1,4 @@
-<button [routerLink]="['/dashboard']">Home</button><button (click)="logout()">Logout</button>
+<button (click)="logout()">Logout</button>
 <h1>QUESTION FORM</h1>
 <form (submit)="createQuestion()">
   <p><label for="question-description">Title: <br> </label><input type="text" name="description" id="description" class="form-control" required minlength="6" [(ngModel)]="question.description" #qDesc="ngModel"></p>
@@ -11,5 +11,5 @@
           <p style="color: red;">Complaint must be at least 6 characters</p>
         </div>
       </div>
-    <input type="submit" value="Ask!!">
+    <input type="submit" value="Submit">
 </form>
