@@ -24,6 +24,7 @@ import { VehicleComponent } from './vehicle/vehicle.component';
 import { VehicleCreateComponent } from './vehicle/vehicle-create/vehicle-create.component';
 import { VehicleShowAllComponent } from './vehicle/vehicle-show-all/vehicle-show-all.component';
 import { VehicleShowOneComponent } from './vehicle/vehicle-show-one/vehicle-show-one.component';
+import { HeaderNavComponent } from './header-nav/header-nav.component';
 
 
 
@@ -42,7 +43,8 @@ import { VehicleShowOneComponent } from './vehicle/vehicle-show-one/vehicle-show
     VehicleComponent,
     VehicleCreateComponent,
     VehicleShowAllComponent,
-    VehicleShowOneComponent
+    VehicleShowOneComponent,
+    HeaderNavComponent
   ],
   imports: [
     BrowserModule,
