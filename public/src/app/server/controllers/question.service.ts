@@ -9,9 +9,9 @@ export class QuestionService {
   constructor(private _http: Http) { }
 
 
-  createQuestion(question: Question){
+  createQuestion(question: Question, veh_id){
     console.log("sending question to backend")
-    return this._http.post("/question/create", question);
+    return this._http.post("/reviews/create/"+veh_id, question);
   }
   index(questions){
     console.log("reaching to to the backend for post list");

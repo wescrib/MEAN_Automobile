@@ -5,12 +5,13 @@
     <div *ngIf="currentUser == null">
         <p><a href [routerLink]="['/registration']">Sign up</a>/login to write a review</p>
     </div>
-    <p>There are no reviews yet! Write one <a href [routerLink]="['/review/new/',vehicle._id]">here</a>!</p>
-
+    <div class="write-review" *ngIf="vehicle._reviews.length==0">
+        <p>There are no reviews yet! Write one <a href [routerLink]="['/review/new/',vehicle._id]">here</a>!</p>
+    </div>
     <div *ngFor="let review of vehicle._reviews">
-        <a href="#">{{review}}</a>
+        <a class="one-review" href [routerLink]="['/review/view/',review._id]">{{review.description}}</a>
     </div>
 
 </div>
 
-{{vehicle}}
+<!-- {{vehicle | json}} -->

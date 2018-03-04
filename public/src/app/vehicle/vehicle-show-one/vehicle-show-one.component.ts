@@ -16,7 +16,7 @@ export class VehicleShowOneComponent implements OnInit {
   veh_id: string;
   vehicle: Vehicle = new Vehicle;
   currentUser: User=null;
-  subscription: Subscription
+  subscription: Subscription;
 
   constructor(
     private _router: Router,

@@ -24,26 +24,11 @@ const routes: Routes = [
       {path:"dashboard", component: DashboardComponent},
       {path:"", component: VehicleComponent},
       {path:"vehicle/view/:veh_id", component: VehicleShowOneComponent},
-      {path:"review/new/:veh_id", component: QuestionCreateComponent}],
-
-    // component: DashboardComponent,
+      {path:"review/new/:veh_id", component: QuestionCreateComponent},
+      {path:"review/view/:veh_id", component: QuestionOneComponent},
+    
+    ],
   },
-  // {
-  //   path:"post/new/:veh_id",
-  //   component: QuestionCreateComponent
-  // },
-  // {
-  //   path:"dashboard/post/:id",
-  //   component: QuestionOneComponent
-  // },
-  // {
-  //   path:"vehicle/build/new",
-  //   component: VehicleComponent
-  // },
-  // {
-  //   path:"vehicle/view/:veh_id",
-  //   component: VehicleShowOneComponent
-  // }
 ];
 
 @NgModule({
