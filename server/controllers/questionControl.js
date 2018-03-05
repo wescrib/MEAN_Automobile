@@ -42,6 +42,7 @@ class QuestionController {
         })
     }
     oneQuestion(req, res){
+        console.log("SERVER: GETTING THE REVIEW", req.params.id);
         Question.findById(req.params.id)
         .populate({path:"_user", model: "User"})            //find creator
         .populate({path: "_answers", model: "Answer",
@@ -49,6 +50,7 @@ class QuestionController {
         }})                                                 //find all answers that belong to question
         .exec((err, q)=>{
             if(err){
+                console.log("SERVER: CANNOT LOCATE POST")
                 return res.json({"error":"Cannot locate post"})
             }
             console.log(q)

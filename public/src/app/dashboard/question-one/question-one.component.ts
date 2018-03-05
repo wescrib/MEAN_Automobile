@@ -36,15 +36,15 @@ export class QuestionOneComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.subscription = this._route.params.subscribe(params => this.question_id = params.id);
+    this.subscription = this._route.params.subscribe(params => this.question_id = params.rev_id);
     this.getPost();
     this.inSession();
     this.currentUser;
-    this.sortedLikes();
+    // this.sortedLikes();
   }
 
   getPost(){
-    console.log("GETTING QUESTION - SUBCOMP");
+    console.log("GETTING QUESTION - SUBCOMP", this.question_id);
     this._questionService.getOneQuestion(this.question_id, question => this.question = question)
   }
 
@@ -61,11 +61,11 @@ export class QuestionOneComponent implements OnInit {
     );
   }
 
-  sortedLikes(){
-    console.log("subcomponent reaching service for answers")
-    console.log(this.question_id)
-    this._questionService.sortedAnswers(this.question_id,answers => this.answerList=answers);
-  }
+  // sortedLikes(){
+  //   console.log("subcomponent reaching service for answers")
+  //   console.log(this.question_id)
+  //   this._questionService.sortedAnswers(this.question_id,answers => this.answerList=answers);
+  // }
 
   logout(){
     this._userService.logout().subscribe(res => {this.currentUser = null})

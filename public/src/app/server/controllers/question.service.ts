@@ -15,14 +15,14 @@ export class QuestionService {
   }
   index(questions){
     console.log("reaching to to the backend for post list");
-    return this._http.get("/question/all").subscribe(
+    return this._http.get("/reviews/all").subscribe(
       res => questions(res.json()),
       err => console.log(err)
     );
   }
   getOneQuestion(id: string, cb){
-    console.log("reaching to backend for single post");
-    this._http.get("/question/"+id).subscribe(
+    console.log("reaching to backend for single post", id);
+    this._http.get("/reviews/"+id).subscribe(
       res => cb(res.json()),
       err => console.log(err)
     );
@@ -47,11 +47,11 @@ export class QuestionService {
     return this._http.post("/question/"+question_id+"/answer/new", answer);
   }
 
-  sortedAnswers(question_id: string, cb){
-    console.log(question_id," | question id from service");
-    return this._http.get("/answer/all/"+question_id).subscribe(
-      res => cb(res.json()),
-      err => console.log("ERROR LIST",err)
-    )
-  }
+  // sortedAnswers(question_id: string, cb){
+  //   console.log(question_id," | question id from service");
+  //   return this._http.get("/answer/all/"+question_id).subscribe(
+  //     res => cb(res.json()),
+  //     err => console.log("ERROR LIST",err)
+  //   )
+  // }
 }

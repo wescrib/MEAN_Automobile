@@ -25,7 +25,7 @@ const routes: Routes = [
       {path:"", component: VehicleComponent},
       {path:"vehicle/view/:veh_id", component: VehicleShowOneComponent},
       {path:"review/new/:veh_id", component: QuestionCreateComponent},
-      {path:"review/view/:veh_id", component: QuestionOneComponent},
+      {path:"review/view/:rev_id", component: QuestionOneComponent},
     
     ],
   },
