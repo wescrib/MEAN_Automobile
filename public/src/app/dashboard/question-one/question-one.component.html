@@ -4,7 +4,7 @@
 <p>By {{question._user.first_name}}</p>
 <hr>
 <h5>COMMENTS</h5>
-<form (submit)="createAnswer(question._id).reset()">
+<form (submit)="createAnswer(question._id)">
     <p class="answer-content"><label for="answer-content">Comment: <br> </label><textarea cols="40" rows="5" name="question" id="question" class="form-control" required minlength="6" [(ngModel)]="answer.content" #cContent="ngModel"></textarea></p>
         <div *ngIf="cContent.invalid && (cContent.dirty || cContent.touched)" class="alert alert-danger">
           <div *ngIf="cContent.errors.required">
@@ -14,31 +14,22 @@
             <p style="color: red;">Comment must be at least 6 characters</p>
           </div>
         </div>
-      <p><textarea name="description" id="description" cols="40" rows="10" placeholder="Details here (optional)..." [(ngModel)]="answer.description"></textarea></p>
       <input type="submit" value="Comment">
   </form>
+
+
 <div *ngFor="let answer of question._answers">
-    <p class="commentContent">{{answer.content}} - {{answer._user.first_name}} <button (click)="like(answer._id)">Like</button></p>
-    <p class="commentDesc">{{answer.description}}</p>
+    <p class="commentContent">{{answer.content}}</p>
+      <div class="votes">
+        <button class="upvote" (click)="upvote(answer._id)">🢁</button>
+        <button class="downvote" (click)="downvote(answer._id)">🢃</button>
+      </div>
     <p class="commentAuthor">By {{answer._user.first_name}}</p>
-    <div *ngIf="answer.like.length == 1">
+    <div *ngIf="answer.upvote.length == 1">
       <p>1 person likes this</p>
     </div>
-    <div *ngIf="answer.like.length >= 2">
+    <div *ngIf="answer.upvote.length >= 2">
       <p>{{answer.like.length}} people like this</p>
     </div>
     <hr>
 </div>
-<!-- <div *ngFor="let answer of answerList">
-    <p class="commentContent">{{answer.content}} - {{answer._user.first_name}} <button (click)="like(answer._id)">Like</button></p>
-    <p class="commentDesc">{{answer.description}}</p>
-    <p class="commentAuthor">By {{answer._user}}</p>
-    <div *ngIf="answer.like.length == 1">
-      <p>1 person likes this</p>
-    </div>
-    <div *ngIf="answer.like.length >= 2">
-      <p>{{answer.like.length}} people like this</p>
-    </div>
-    <hr>
-</div>
-{{answerList | json}} -->

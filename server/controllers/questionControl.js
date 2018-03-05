@@ -196,6 +196,7 @@ class QuestionController {
 
 
     newAnswer(req,res){
+        console.log("SERVER: ATTEMPTING TO MAKE COMMENT")
         Question.findById(req.params.question_id, (err, question) =>{
             var answer = new Answer(req.body);
             if(req.body.content.length > 2){
@@ -206,8 +207,10 @@ class QuestionController {
                 answer.save((err)=>{
                     question.save((err)=>{
                         if(err){
+                            console.log("SERVER: CANNOT POST COMMENT")
                             return res.json(err)
                         }
+                        console.log("SERVER: COMMENT SUCCESS")
                         return res.json(answer)
                     })
                 })

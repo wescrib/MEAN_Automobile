@@ -29,8 +29,8 @@ export class QuestionService {
   }
 
   upvoteRev(id: string, cb){
-    console.log("SERVICE: REVIEW UPVOTE BEING SENT TO SERVER")
-    this._http.put("/reviews/up/"+id,{}).subscribe(
+    console.log("SERVICE: COMMENT UPVOTE BEING SENT TO SERVER", id)
+    this._http.put("/comment/up/"+id,{}).subscribe(
       res => cb(res.json()),
       err => console.log(err)
     )
@@ -44,7 +44,7 @@ export class QuestionService {
   }
   createAnswer(answer: Answer, question_id){
     console.log("sending comment to backend", answer);
-    return this._http.post("/question/"+question_id+"/answer/new", answer);
+    return this._http.post("/reviews/"+question_id+"/comment/new", answer);
   }
 
   // sortedAnswers(question_id: string, cb){

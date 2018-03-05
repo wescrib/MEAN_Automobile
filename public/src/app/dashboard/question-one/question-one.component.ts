@@ -41,6 +41,7 @@ export class QuestionOneComponent implements OnInit {
     this.inSession();
     this.currentUser;
     // this.sortedLikes();
+
   }
 
   getPost(){
@@ -48,8 +49,13 @@ export class QuestionOneComponent implements OnInit {
     this._questionService.getOneQuestion(this.question_id, question => this.question = question)
   }
 
-  like(answer_id){
-    console.log("trying to like");
+  upvote(answer_id){
+    console.log("COMPONENT: SENDING UPVOTE TO SERVICE");
+    this._questionService.upvoteRev(answer_id, res => this.getPost())
+  }
+
+  downvoate(answer_id){
+    console.log("COMPONENT: SENDING DOWNVOTE TO SERVICE");
     this._questionService.upvoteRev(answer_id, res => this.getPost())
   }
   createAnswer(question_id){
