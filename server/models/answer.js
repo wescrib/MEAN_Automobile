@@ -17,6 +17,11 @@ var AnswerSchema = new mongoose.Schema({
         required: [true, "User is not logged in"],
         ref: "User"
     }],
+    rank: {
+        type: Number,
+        default: 0
+    },
+
     _user: {
         type: mongoose.Schema.Types.ObjectId,
         required: [true, "User is not logged in"],

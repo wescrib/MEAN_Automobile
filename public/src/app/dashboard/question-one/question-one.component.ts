@@ -40,29 +40,30 @@ export class QuestionOneComponent implements OnInit {
     this.getPost();
     this.inSession();
     this.currentUser;
-    // this.sortedLikes();
 
   }
 
   getPost(){
     console.log("GETTING QUESTION - SUBCOMP", this.question_id);
+    document.forms["commentForm"].reset();
     this._questionService.getOneQuestion(this.question_id, question => this.question = question)
   }
 
   upvote(answer_id){
     console.log("COMPONENT: SENDING UPVOTE TO SERVICE");
-    this._questionService.upvoteRev(answer_id, res => this.getPost())
+    this._questionService.upvoteComment(answer_id, res => this.getPost())
   }
 
-  downvoate(answer_id){
+  downvote(answer_id){
     console.log("COMPONENT: SENDING DOWNVOTE TO SERVICE");
-    this._questionService.upvoteRev(answer_id, res => this.getPost())
+    this._questionService.downvoteComment(answer_id, res => this.getPost())
   }
+
   createAnswer(question_id){
     console.log("creating answer in sub-component", this.answer);
     this._questionService.createAnswer(this.answer, question_id).subscribe(
       // res => this._router.navigateByUrl("/dashboard/post/"+question_id),
-      res => res.json(),
+      res => this.getPost(),
       error => console.log(error)
     );
   }

@@ -15,7 +15,7 @@ export class VehicleCreateComponent implements OnInit {
   private _vS: VehicleService;
   private _router: Router;
   private vehicle: Vehicle;
-
+  vehicles: Vehicle[];
   private user: User;
   currentUser: User=null;
   private _uS: UserService;
@@ -34,15 +34,21 @@ export class VehicleCreateComponent implements OnInit {
 
   ngOnInit() {
     this.currentUser
+    this.vehList();
   }
 
   buildVeh(){
     console.log("SUB-COMPONENT: ATTEMPTING TO BUILD VEHICLE:\n", this.vehicle);
     this._vS.createVehicle(this.vehicle).subscribe(
       // res => this._router.navigateByUrl("/vehicles"),
-      res => res.json(),
+      res => this.vehList(),
       error => console.log(error)
     );
+  }
+  vehList(){
+    console.log("SUBCOMPONENT: SENDING REQUEST TO SERVICE FOR LIST OF VEHICLES");
+    document.forms["buildVeh"].reset()
+    return this._vS.vehIndex((vehicles)=> this.vehicles = vehicles);
   }
 
   inSession(){

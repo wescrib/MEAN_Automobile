@@ -24,6 +24,11 @@ import { VehicleCreateComponent } from './vehicle/vehicle-create/vehicle-create.
 import { VehicleShowAllComponent } from './vehicle/vehicle-show-all/vehicle-show-all.component';
 import { VehicleShowOneComponent } from './vehicle/vehicle-show-one/vehicle-show-one.component';
 import { HeaderNavComponent } from './header-nav/header-nav.component';
+import { HomeComponent } from './home/home.component';
+import { ShowVehMakeComponent } from './show-veh-make/show-veh-make.component';
+import { ShowVehBodyComponent } from './show-veh-body/show-veh-body.component';
+import { ShowVehModelComponent } from './show-veh-model/show-veh-model.component';
+import { ShowVehYearComponent } from './show-veh-year/show-veh-year.component';
 
 
 
@@ -42,7 +47,12 @@ import { HeaderNavComponent } from './header-nav/header-nav.component';
     VehicleCreateComponent,
     VehicleShowAllComponent,
     VehicleShowOneComponent,
-    HeaderNavComponent
+    HeaderNavComponent,
+    HomeComponent,
+    ShowVehMakeComponent,
+    ShowVehBodyComponent,
+    ShowVehModelComponent,
+    ShowVehYearComponent
   ],
   imports: [
     BrowserModule,

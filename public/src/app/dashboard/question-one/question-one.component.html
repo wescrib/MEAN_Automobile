@@ -4,7 +4,7 @@
 <p>By {{question._user.first_name}}</p>
 <hr>
 <h5>COMMENTS</h5>
-<form (submit)="createAnswer(question._id)">
+<form (submit)="createAnswer(question._id)" name="commentForm">
     <p class="answer-content"><label for="answer-content">Comment: <br> </label><textarea cols="40" rows="5" name="question" id="question" class="form-control" required minlength="6" [(ngModel)]="answer.content" #cContent="ngModel"></textarea></p>
         <div *ngIf="cContent.invalid && (cContent.dirty || cContent.touched)" class="alert alert-danger">
           <div *ngIf="cContent.errors.required">
@@ -19,14 +19,19 @@
 
 
 <div *ngFor="let answer of question._answers">
+  <!-- {{answer | json}} -->
     <p class="commentContent">{{answer.content}}</p>
       <div class="votes">
         <button class="upvote" (click)="upvote(answer._id)">🢁</button>
+        {{answer.rank}}
         <button class="downvote" (click)="downvote(answer._id)">🢃</button>
       </div>
     <p class="commentAuthor">By {{answer._user.first_name}}</p>
     <div *ngIf="answer.upvote.length == 1">
       <p>1 person likes this</p>
+    </div>
+    <div *ngIf="answer.downvote.length == 1">
+      <p>1 person dislikes this</p>
     </div>
     <div *ngIf="answer.upvote.length >= 2">
       <p>{{answer.like.length}} people like this</p>

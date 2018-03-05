@@ -11,6 +11,11 @@ import { VehicleCreateComponent } from './vehicle/vehicle-create/vehicle-create.
 import { VehicleComponent } from './vehicle/vehicle.component';
 import { VehicleShowOneComponent } from './vehicle/vehicle-show-one/vehicle-show-one.component';
 import { HeaderNavComponent } from './header-nav/header-nav.component';
+import { HomeComponent } from './home/home.component';
+import { ShowVehMakeComponent } from './show-veh-make/show-veh-make.component';
+import { ShowVehBodyComponent } from './show-veh-body/show-veh-body.component';
+import { ShowVehYearComponent } from './show-veh-year/show-veh-year.component';
+import { ShowVehModelComponent } from './show-veh-model/show-veh-model.component';
 
 const routes: Routes = [
   {
@@ -21,8 +26,12 @@ const routes: Routes = [
     path:"",
     component: HeaderNavComponent,
     children: [
-      {path:"dashboard", component: DashboardComponent},
-      {path:"", component: VehicleComponent},
+      {path:"", component: HomeComponent},
+      {path:"auto/build", component: VehicleCreateComponent},
+      {path:"vehicle/:veh_make", component: ShowVehMakeComponent},
+      {path:"vehicle/:veh_body", component: ShowVehBodyComponent},
+      {path:"vehicle/:veh_year", component: ShowVehYearComponent},
+      {path:"vehicle/:veh_body", component: ShowVehModelComponent},
       {path:"vehicle/view/:veh_id", component: VehicleShowOneComponent},
       {path:"review/new/:veh_id", component: QuestionCreateComponent},
       {path:"review/view/:rev_id", component: QuestionOneComponent},

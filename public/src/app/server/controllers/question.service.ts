@@ -28,13 +28,22 @@ export class QuestionService {
     );
   }
 
-  upvoteRev(id: string, cb){
+  upvoteComment(id: string, cb){
     console.log("SERVICE: COMMENT UPVOTE BEING SENT TO SERVER", id)
     this._http.put("/comment/up/"+id,{}).subscribe(
       res => cb(res.json()),
       err => console.log(err)
     )
   }
+
+  downvoteComment(id: string, cb){
+    console.log("SERVICE: COMMENT UPVOTE BEING SENT TO SERVER", id)
+    this._http.put("/comment/down/"+id,{}).subscribe(
+      res => cb(res.json()),
+      err => console.log(err)
+    )
+  }
+
   downvoteRev(id: string, cb){
     console.log("SERVICE: REVIEW DOWNVOTE BEING SENT TO SERVER");
     this._http.put("/reviews/down/"+id,{}).subscribe(

@@ -3,7 +3,7 @@
 <p>{{ vehicle | json }}</p>
 
 <h3>Build Vehicle</h3>
-<form (submit)="buildVeh()">
+<form (submit)="buildVeh()" name="buildVeh">
   <p class="veh-make"><input type="text" placeholder="*Make" name="make" required [(ngModel)]="vehicle.make"></p>
   <p class="veh-model"><input type="text" placeholder="*Model" name="model" required [(ngModel)]="vehicle.model"></p>
   <p class="veh-type"><input type="text" placeholder="Type (optional)" name="type" [(ngModel)]="vehicle.type"></p>
@@ -27,3 +27,21 @@
   <p class="veh-hp"><input type="text" placeholder="Horpsepower (optional)" [(ngModel)]="vehicle.hp" name="hp"></p>
   <p><input type="submit" value="Build"></p>
 </form>
+<div class="recent_builds">
+  <table>
+    <tr>
+      <th>Make</th>
+      <th>Model</th>
+      <th>Year</th>
+      <th>Body</th>
+      <th>Engine Size</th>
+    </tr>
+    <tr class="veh-list" *ngFor="let veh of vehicles">
+      <td><a href [routerLink]="['/vehicle/view/', veh._id]">{{veh.make}}</a></td>
+      <td><a href="#">{{veh.model}}</a></td>
+      <td><a href="#">{{veh.year}}</a></td>
+      <td><a href="#">{{veh.body}}</a></td>
+      <td><a href="#">{{veh.engineSize}}</a></td>
+    </tr>
+  </table>
+</div>

@@ -5,4 +5,5 @@ export class Answer {
     downvote: any[];
     _user: any;
     _question: any;
+    rank: number
 }
