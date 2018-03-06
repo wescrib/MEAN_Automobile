@@ -34,14 +34,12 @@
       <th>Model</th>
       <th>Year</th>
       <th>Body</th>
-      <th>Engine Size</th>
     </tr>
     <tr class="veh-list" *ngFor="let veh of vehicles">
-      <td><a href [routerLink]="['/vehicle/view/', veh._id]">{{veh.make}}</a></td>
-      <td><a href="#">{{veh.model}}</a></td>
-      <td><a href="#">{{veh.year}}</a></td>
-      <td><a href="#">{{veh.body}}</a></td>
-      <td><a href="#">{{veh.engineSize}}</a></td>
+      <td><a href [routerLink]="['/vehicle/makeList/', veh.make]">{{veh.make}}</a></td>
+      <td><a href [routerLink]="['/vehicle/modelList/', veh.model]">{{veh.model}}</a></td>
+      <td><a href [routerLink]="['/vehicle/yearList/', veh.year]">{{veh.year}}</a></td>
+      <td><a href [routerLink]="['/vehicle/bodyList/', veh.body]">{{veh.body}}</a></td>
     </tr>
   </table>
 </div>

@@ -39,6 +39,12 @@ module.exports = function(app){
     app.delete("/vehicle/remove/:veh_id", Vehicle.deleteVehicle);
     app.put("/vehicle/update/:veh_id", Vehicle.updateVehicle);
     app.get("/vehicle/:veh_id/review", Vehicle.getVehReviews);
+    app.get("/vehicle/make/:veh_make", Vehicle.getByMake);
+    app.get("/vehicle/model/:veh_model", Vehicle.getByModel);
+    app.get("/vehicle/body/:veh_body", Vehicle.getByBody);
+    app.get("/vehicle/year/:veh_year", Vehicle.getByYear);
+
+
 
     app.all("*",(req,res,next) => {
         res.sendFile(path.resolve("./public/dist/index.html"))

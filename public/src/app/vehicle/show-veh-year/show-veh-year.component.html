@@ -1,0 +1,19 @@
+<h2>{{veh_year}}</h2>
+
+<div class="veh-years">
+  <table>
+      <tr>
+        <th>Make</th>
+        <th>Model</th>
+        <th>Body</th>
+        <th>Reviews</th>
+      </tr>
+      <tr class="veh-list" *ngFor="let veh of years">
+        <td><a href [routerLink]="['/vehicle/makeList/', veh.make]">{{veh.make}}</a></td>
+        <td><a href [routerLink]="['/vehicle/modelList/', veh.model]">{{veh.model}}</a></td>
+        <td><a href [routerLink]="['/vehicle/bodyList/', veh.body]">{{veh.body}}</a></td>
+        <td><a href [routerLink]="['/vehicle/view/', veh._id]">Reviews</a></td>
+
+      </tr>
+    </table>
+</div>

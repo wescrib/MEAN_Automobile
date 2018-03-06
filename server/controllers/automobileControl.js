@@ -32,6 +32,7 @@ class VehicleController {
     }
     //FIND ONE VEHICLE
     oneVehicle(req,res){
+        console.log("GETTING SINGLE VEHICLE");
         Vehicle.findById(req.params.veh_id)
         .populate({path:"_user", model: "User"})
         .populate({path:"_reviews", model: "Question",
@@ -45,6 +46,52 @@ class VehicleController {
             return res.json(vehicle)
         })
     }
+
+    getByMake(req,res){
+        console.log("GETTING MAKE")
+        Vehicle.find({make: req.params.veh_make}, (err, makes)=>{
+            if(err){
+                console.log("SERVER: CANNOT FIND ANYTHING BY THIS MAKE")
+                return res.json(err);
+            }
+            console.log("SERVER: FOUND", req.params.veh_make)
+            return res.json(makes);
+        })
+    }
+
+    getByModel(req,res){
+        Vehicle.find({model: req.params.veh_model}, (err, vehicles)=>{
+            if(err){
+                console.log("SERVER: CANNOT FIND ANYTHING BY THIS MODEL")
+                return res.json(err);
+            }
+            console.log("SERVER: FOUND", req.params.veh_model)
+            return res.json(vehicles);
+        })
+    }
+
+    getByBody(req,res){
+        Vehicle.find({body: req.params.veh_body}, (err, vehicles)=>{
+            if(err){
+                console.log("SERVER: CANNOT FIND ANYTHING BY THIS MAKE")
+                return res.json(err);
+            }
+            console.log("SERVER: FOUND", req.params.veh_body)
+            return res.json(vehicles);
+        })
+    }
+
+    getByYear(req,res){
+        Vehicle.find({year: req.params.veh_year}, (err, vehicles)=>{
+            if(err){
+                console.log("SERVER: CANNOT FIND ANYTHING BY THIS MAKE")
+                return res.json(err);
+            }
+            console.log("SERVER: FOUND", req.params.veh_year)
+            return res.json(vehicles);
+        })
+    }
+
     //VEHICLE DELETE
     deleteVehicle(req,res){
         console.log("Server delete of vehicle ID:", req.params.veh_id)
