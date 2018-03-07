@@ -17,6 +17,7 @@ import { ShowVehBodyComponent } from './vehicle/show-veh-body/show-veh-body.comp
 import { ShowVehYearComponent } from './vehicle/show-veh-year/show-veh-year.component';
 import { ShowVehModelComponent } from './vehicle/show-veh-model/show-veh-model.component';
 import { VehicleShowAllComponent } from './vehicle/vehicle-show-all/vehicle-show-all.component';
+import { AboutUsComponent } from './about-us/about-us.component';
 
 const routes: Routes = [
   {
@@ -36,7 +37,8 @@ const routes: Routes = [
       {path:"vehicle/view/:veh_id", component: VehicleShowOneComponent},
       {path:"review/new/:veh_id", component: QuestionCreateComponent},
       {path:"review/view/:rev_id", component: QuestionOneComponent},
-      {path:"vehicles/reviews/all", component: VehicleShowAllComponent}
+      {path:"vehicles/reviews/all", component: VehicleShowAllComponent},
+      {path: "kittykatlicklick/about-us", component:AboutUsComponent}
     
     ],
   },

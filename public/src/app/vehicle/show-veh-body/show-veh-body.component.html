@@ -1,18 +1,18 @@
-<h2>{{veh_body}}</h2>
+<h1>{{veh_body}}</h1>
 
 <div class="veh-bodies">
-  <table>
-      <tr>
-        <th>Make</th>
-        <th>Model</th>
-        <th>Year</th>
-        <th>Reviews</th>
-      </tr>
-      <tr class="veh-list" *ngFor="let veh of bodies">
-        <td><a href [routerLink]="['/vehicle/makeList/', veh.make]">{{veh.make}}</a></td>
-        <td><a href [routerLink]="['/vehicle/modelList/', veh.model]">{{veh.model}}</a></td>
-        <td><a href [routerLink]="['/vehicle/yearList/', veh.year]">{{veh.year}}</a></td>
-        <td><a href [routerLink]="['/vehicle/view/', veh._id]">Reviews</a></td>
-      </tr>
-    </table>
+  <table class="table table-hover">
+    <tr>
+      <th scope="col">Make</th>
+      <th scope="col">Model</th>
+      <th scope="col">Year</th>
+      <th scope="col">Reviews</th>
+    </tr>
+    <tr class="table-light" *ngFor="let veh of bodies">
+      <td><a href [routerLink]="['/vehicle/makeList/', veh.make]">{{veh.make}}</a></td>
+      <td><a href [routerLink]="['/vehicle/modelList/', veh.model]">{{veh.model}}</a></td>
+      <td><a href [routerLink]="['/vehicle/yearList/', veh.year]">{{veh.year}}</a></td>
+      <td><a href [routerLink]="['/vehicle/view/', veh._id]">Reviews</a></td>
+    </tr>
+  </table>
 </div>

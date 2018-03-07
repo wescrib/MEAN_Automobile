@@ -1,23 +1,26 @@
-<h1>VEHICLE INDEx</h1>
+<h1 class="my-4">VEHICLE INDEX</h1>
 <div class="veh-all">
-    <div class="search_props">
-        <label for="makeSearch">Make: </label><input [(ngModel)] = "makeSearch"> <label for="makeSearch">Model: </label><input [(ngModel)] = "modelSearch"> <label for="bodySearch">Body: </label><input [(ngModel)] = "bodySearch"> <label for="yearSearch">Year: </label><input [(ngModel)] = "yearSearch">
-    </div>
-        <table>
+        <table class="table table-hover">
             <tr>
-              <th>Make</th>
-              <th>Model</th>
-              <th>Year</th>
-              <th>Body</th>
-              <th>Reviews</th>
+                <td><input class="mr-3" [(ngModel)] = "makeSearch" placeholder="Make"></td>
+                <td><input class="mr-3" [(ngModel)] = "modelSearch" placeholder="Model"></td>
+                <td><input  [(ngModel)] = "yearSearch" placeholder="Year"></td>
+                <td><input class="mr-3" [(ngModel)] = "bodySearch" placeholder="Body"></td>
+                <td></td>
             </tr>
-            <tr class="veh-list" *ngFor="let veh of vehicles | search: makeSearch:'make' | search: modelSearch: 'model' | search: bodySearch:'body' | search: yearSearch:'year'">
+            <tr>
+              <th scope="col">Make</th>
+              <th scope="col">Model</th>
+              <th scope="col">Year</th>
+              <th scope="col">Body</th>
+              <th scope="col">Reviews</th>
+            </tr>
+            <tr class="table-light" *ngFor="let veh of vehicles | search: makeSearch:'make' | search: modelSearch: 'model' | search: bodySearch:'body' | search: yearSearch:'year'">
               <td><a href [routerLink]="['/vehicle/makeList/', veh.make]">{{veh.make}}</a></td>
               <td><a href [routerLink]="['/vehicle/modelList/', veh.model]">{{veh.model}}</a></td>
               <td><a href [routerLink]="['/vehicle/yearList/', veh.year]">{{veh.year}}</a></td>
               <td><a href [routerLink]="['/vehicle/bodyList/', veh.body]">{{veh.body}}</a></td>
-              <td><a href [routerLink]="['/vehicle/view/', veh._id]">Reviews</a></td>
-      
+              <td><a href [routerLink]="['/vehicle/view/', veh._id]">{{veh._reviews.length}}</a></td>
             </tr>
           </table>
       </div>

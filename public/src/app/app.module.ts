@@ -31,6 +31,7 @@ import { ShowVehModelComponent } from './vehicle/show-veh-model/show-veh-model.c
 import { ShowVehYearComponent } from './vehicle/show-veh-year/show-veh-year.component';
 import { ModelSearchPipe } from './server/controllers/model-search.pipe';
 import { MakeSearchPipe } from './server/controllers/make-search.pipe';
+import { AboutUsComponent } from './about-us/about-us.component';
 
 
 
@@ -56,7 +57,8 @@ import { MakeSearchPipe } from './server/controllers/make-search.pipe';
     ShowVehModelComponent,
     ShowVehYearComponent,
     ModelSearchPipe,
-    MakeSearchPipe
+    MakeSearchPipe,
+    AboutUsComponent
   ],
   imports: [
     BrowserModule,

@@ -1,17 +1,17 @@
-<h2>{{veh_make}}</h2>
+<h1>{{veh_make}}</h1>
 
 
 
 <div class="veh-make-list">
-  <table class="veh-make-table">
+  <table class="table table-hover">
     <tr>
-      <th>Model</th>
-      <th>Body</th>
-      <th>Year</th>
-      <th>Reviews</th>
+      <th scope="col">Model</th>
+      <th scope="col">Body</th>
+      <th scope="col">Year</th>
+      <th scope="col">Reviews</th>
     </tr>
-    <tr class="veh-list-for" *ngFor="let vehicle of makes">
-      <td><a href [routerLink]="['/vehicle/modelList/', vehicle.model]">{{vehicle.model}}</a></td>
+    <tr class="table-light" *ngFor="let vehicle of makes">
+      <td scope="row"><a href [routerLink]="['/vehicle/modelList/', vehicle.model]">{{vehicle.model}}</a></td>
       <td><a href [routerLink]="['/vehicle/bodyList/', vehicle.body]">{{vehicle.body}}</a></td>
       <td><a href [routerLink]="['/vehicle/yearList/', vehicle.year]">{{vehicle.year}}</a></td>
       <td><a href [routerLink]="['/vehicle/view/', vehicle._id]">Reviews</a></td>
