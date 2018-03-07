@@ -256,6 +256,7 @@ class QuestionController {
                     answer.downvote.splice(i,1);
                     answer.upvote.push(req.session.user_id);
                     answer.rank++;
+                    answer.rank++;
                     answer.save();
                     return res.json(answer);
                 }
@@ -302,6 +303,7 @@ class QuestionController {
                 if(req.session.user_id == answer.upvote[i]){
                     console.log(answer.upvote[i],"REMOVED")
                     answer.upvote.splice(i,1);
+                    answer.rank--;
                     answer.rank--;
                     answer.downvote.push(req.session.user_id);
                     answer.save();

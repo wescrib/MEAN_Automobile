@@ -20,6 +20,12 @@ export class VehicleShowAllComponent implements OnInit {
   vehicles: Vehicle[];
   private _vS: VehicleService;
 
+  //search stuff
+  private makeSearch: String;
+  private modelSearch: String;
+  private bodySearch: String;
+  private yearSearch: Number;
+
   constructor(
 
     _router:Router,

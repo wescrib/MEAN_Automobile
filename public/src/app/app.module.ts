@@ -29,6 +29,8 @@ import { ShowVehMakeComponent } from './vehicle/show-veh-make/show-veh-make.comp
 import { ShowVehBodyComponent } from './vehicle/show-veh-body/show-veh-body.component';
 import { ShowVehModelComponent } from './vehicle/show-veh-model/show-veh-model.component';
 import { ShowVehYearComponent } from './vehicle/show-veh-year/show-veh-year.component';
+import { ModelSearchPipe } from './server/controllers/model-search.pipe';
+import { MakeSearchPipe } from './server/controllers/make-search.pipe';
 
 
 
@@ -52,7 +54,9 @@ import { ShowVehYearComponent } from './vehicle/show-veh-year/show-veh-year.comp
     ShowVehMakeComponent,
     ShowVehBodyComponent,
     ShowVehModelComponent,
-    ShowVehYearComponent
+    ShowVehYearComponent,
+    ModelSearchPipe,
+    MakeSearchPipe
   ],
   imports: [
     BrowserModule,

@@ -29,7 +29,7 @@ export class UserCreateComponent implements OnInit {
   registerUser(){
     console.log("hit sub service",this.user)
     this._userService.create(this.user).subscribe(
-      res => this._router.navigateByUrl("/dashboard"),
+      res => this._router.navigateByUrl("/"),
       error => console.log(error)
     )
   }

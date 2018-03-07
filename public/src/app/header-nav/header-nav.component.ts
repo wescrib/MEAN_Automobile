@@ -38,7 +38,7 @@ export class HeaderNavComponent implements OnInit {
       res => {
         console.log(res.json(),"IS LOGGED IN");
         this.currentUser = res.json();
-        console.log("NAVIGATION",this.currentUser)
+        console.log(this.currentUser.first_name,"is logged in")
       }
     )
   }

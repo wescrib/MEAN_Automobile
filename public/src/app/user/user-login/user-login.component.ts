@@ -47,7 +47,7 @@ export class UserLoginComponent implements OnInit {
       if(res.status){
         console.log("THIS IS AN ERROR MESSAGE: "+ res)
       }else {
-        this._router.navigateByUrl("/dashboard");
+        this._router.navigateByUrl("/");
       }
     }
   )}
