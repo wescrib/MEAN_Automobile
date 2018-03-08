@@ -31,14 +31,6 @@ export class UserLoginComponent implements OnInit {
    }
 
   ngOnInit(){}
-  // : void {
-  //   this.testForm = new FormGroup({
-  //     "lName": new FormControl(this.user.last_name,[
-  //       Validators.required,
-  //       Validators.minLength(2)
-  //     ]),
-  //   }
-  // )}
 
   loginUser(){
     console.log("login info hit sub component",this.user)

@@ -32,8 +32,9 @@ import { ShowVehYearComponent } from './vehicle/show-veh-year/show-veh-year.comp
 import { ModelSearchPipe } from './server/controllers/model-search.pipe';
 import { MakeSearchPipe } from './server/controllers/make-search.pipe';
 import { AboutUsComponent } from './about-us/about-us.component';
+// import { Ng4FilesModule } from 'angular4-files-upload';
 
-
+import { CollapseModule } from 'ngx-bootstrap'
 
 @NgModule({
   declarations: [
@@ -65,7 +66,9 @@ import { AboutUsComponent } from './about-us/about-us.component';
     AppRoutingModule,
     FormsModule,
     HttpModule,
-    OrderModule
+    OrderModule,
+    CollapseModule,
+    // Ng4FilesModule
   ],
   providers: [
     UserService,

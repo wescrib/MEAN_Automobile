@@ -1,3 +1,12 @@
-body {
-    background-color: purple;
+.content {
+    display: inline-flex;
+}
+
+.veh-build{
+    width: 400px;
+}
+
+.recent_builds{
+    width: 300px;
+    margin-left: 100px;
 }

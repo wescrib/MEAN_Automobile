@@ -1,45 +1,47 @@
-<h1>VEHICLE-CREATE</h1>
-
-<p>{{ vehicle | json }}</p>
-
-<h3>Build Vehicle</h3>
-<form (submit)="buildVeh()" name="buildVeh">
-  <p class="veh-make"><input type="text" placeholder="*Make" name="make" required [(ngModel)]="vehicle.make"></p>
-  <p class="veh-model"><input type="text" placeholder="*Model" name="model" required [(ngModel)]="vehicle.model"></p>
-  <p class="veh-type"><input type="text" placeholder="Type (optional)" name="type" [(ngModel)]="vehicle.type"></p>
-  <p class="veh-year"><input type="text" placeholder="*Year" required name="year"[(ngModel)]="vehicle.year"></p>
-  <p class="veh-body">Choose Body Style: </p>
-    <table>
+<div class="content">
+  <div class="veh-build">
+    <h3 class="m-4">Build Vehicle</h3>
+    <form (submit)="buildVeh()" name="buildVeh" class="mx-4">
+      <p class="veh-make"><input type="text" placeholder="*Make" name="make" required [(ngModel)]="vehicle.make"></p>
+      <p class="veh-model"><input type="text" placeholder="*Model" name="model" required [(ngModel)]="vehicle.model"></p>
+      <p class="veh-type"><input type="text" placeholder="Type (optional)" name="type" [(ngModel)]="vehicle.type"></p>
+      <p class="veh-year"><input type="text" placeholder="*Year" required name="year"[(ngModel)]="vehicle.year"></p>
+      <p class="veh-body lead">Choose Body Style: </p>
+      <table class="table">
+        <tr>
+          <td><input type="radio"[(ngModel)]="vehicle.body" name="body" value="convertible" checked>Convertible</td>
+          <td><input type="radio"[(ngModel)]="vehicle.body" name="body" value="coupe">Coupe</td>
+          <td><input type="radio"[(ngModel)]="vehicle.body" name="body" value="hatchback">Hatchback</td>
+          <td><input type="radio"[(ngModel)]="vehicle.body" name="body" value="sedan">Sedan</td>
+        </tr>
+        <tr>
+          <td><input type="radio"[(ngModel)]="vehicle.body" name="body" value="suv/crossover">SUV/Crossover</td>
+          <td><input type="radio"[(ngModel)]="vehicle.body" name="body" value="truck">Truck</td>
+          <td><input type="radio"[(ngModel)]="vehicle.body" name="body" value="van">Van</td>
+          <td><input type="radio"[(ngModel)]="vehicle.body" name="body" value="wagon">Wagon</td>
+        </tr>
+      </table>
+      <br>
+      <p class="veh-eng-size"><input type="text" placeholder="Engine Size (optional)" [(ngModel)]="vehicle.engineSize" name="engineSize"></p>
+      <p class="veh-hp"><input type="text" placeholder="Horpsepower (optional)" [(ngModel)]="vehicle.hp" name="hp"></p>
+      <p><button type="submit" class="btn btn-primary">Submit</button></p>
+    </form>
+  </div>
+  <div class="recent_builds">
+    <h3 class="my-4">Recent Vehicle Builds</h3>
+    <table class="table table-hover">
       <tr>
-        <td><input type="radio"[(ngModel)]="vehicle.body" name="body" value="convertible" checked>Convertible</td>
-        <td><input type="radio"[(ngModel)]="vehicle.body" name="body" value="coupe">Coupe</td>
-        <td><input type="radio"[(ngModel)]="vehicle.body" name="body" value="hatchback">Hatchback</td>
-        <td><input type="radio"[(ngModel)]="vehicle.body" name="body" value="sedan">Sedan</td>
+        <th scope="col">Make</th>
+        <th scope="col">Model</th>
+        <th scope="col">Year</th>
+        <th scope="col">Body</th>
       </tr>
-      <tr>
-        <td><input type="radio"[(ngModel)]="vehicle.body" name="body" value="suv/crossover">SUV/Crossover</td>
-        <td><input type="radio"[(ngModel)]="vehicle.body" name="body" value="truck">Truck</td>
-        <td><input type="radio"[(ngModel)]="vehicle.body" name="body" value="van">Van</td>
-        <td><input type="radio"[(ngModel)]="vehicle.body" name="body" value="wagon">Wagon</td>
+      <tr class="veh-list" *ngFor="let veh of vehicles">
+        <td><a href [routerLink]="['/vehicle/makeList/', veh.make]">{{veh.make}}</a></td>
+        <td><a href [routerLink]="['/vehicle/modelList/', veh.model]">{{veh.model}}</a></td>
+        <td><a href [routerLink]="['/vehicle/yearList/', veh.year]">{{veh.year}}</a></td>
+        <td><a href [routerLink]="['/vehicle/bodyList/', veh.body]">{{veh.body}}</a></td>
       </tr>
     </table>
-  <p class="veh-eng-size"><input type="text" placeholder="Engine Size (optional)" [(ngModel)]="vehicle.engineSize" name="engineSize"></p>
-  <p class="veh-hp"><input type="text" placeholder="Horpsepower (optional)" [(ngModel)]="vehicle.hp" name="hp"></p>
-  <p><input type="submit" value="Build"></p>
-</form>
-<div class="recent_builds">
-  <table>
-    <tr>
-      <th>Make</th>
-      <th>Model</th>
-      <th>Year</th>
-      <th>Body</th>
-    </tr>
-    <tr class="veh-list" *ngFor="let veh of vehicles">
-      <td><a href [routerLink]="['/vehicle/makeList/', veh.make]">{{veh.make}}</a></td>
-      <td><a href [routerLink]="['/vehicle/modelList/', veh.model]">{{veh.model}}</a></td>
-      <td><a href [routerLink]="['/vehicle/yearList/', veh.year]">{{veh.year}}</a></td>
-      <td><a href [routerLink]="['/vehicle/bodyList/', veh.body]">{{veh.body}}</a></td>
-    </tr>
-  </table>
+  </div>
 </div>

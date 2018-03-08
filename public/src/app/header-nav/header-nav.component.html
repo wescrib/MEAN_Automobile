@@ -1,9 +1,9 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Navbar</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation" style="">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#"><h1>Joe's Car Shack</h1></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation" style="">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse" id="navbarColor03">
+  <div class="collapse navbar-collapse" id="navbarColor02">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active"><a class="nav-link" href [routerLink]="['/']">Home</a></li>
       <li class="nav-item"><a class="nav-link" href [routerLink]="['/auto/build']">Build Vehicle</a></li>
@@ -11,6 +11,19 @@
       <li class="nav-item"><a class="nav-link" href [routerLink]="['/kittykatlicklick/about-us']">About Us</a></li>
       <!-- <li class="nav-item">Contact</li> -->
     </ul>
+    <div class="btn-group mx-5 " role="group" aria-label="Button group with nested dropdown">
+      <!-- <button type="button" class="btn btn-outline-light">Sign In</button> -->
+      <div class="btn-group" role="group">
+        <button id="btnGroupDrop1" type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sign In</button> <button type="button" class="btn btn-outline-light"><a href [routerLink]="['/registration']">Register</a></button>
+        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+          <form (submit)="loginUser()" name="myForm">
+            <input placeholder="Email" type="email" name="email" [(ngModel)]="user.email" required ng-minlength="3">
+            <input placeholder="Password" type="password" name="user.password" [(ngModel)]="user.password">
+            <input type="submit" value="Submit">
+          </form>
+        </div>
+      </div>
+    </div>
     <form class="form-inline my-2 my-lg-0" action="http://search.yahoo.com/bin/search">
       <input class="form-control mr-sm-2" type="text" placeholder="Search">
       <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>

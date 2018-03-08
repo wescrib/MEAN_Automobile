@@ -15,12 +15,14 @@ export class HeaderNavComponent implements OnInit {
   private _userService: UserService;
   private _http: Http;
   private _router: Router;
+  private user: User;
 
   constructor(
     _router: Router,
     _userService: UserService,
   ) {
     this._userService = _userService;
+    this.user = new User;
    }
 
   ngOnInit() {
@@ -42,4 +44,15 @@ export class HeaderNavComponent implements OnInit {
       }
     )
   }
+  loginUser(){
+    console.log("login info hit sub component",this.user)
+    this._userService.login(this.user, (res) => {
+      console.log(res);
+      if(res.status){
+        console.log("THIS IS AN ERROR MESSAGE: "+ res)
+      }else{
+        location.reload()
+      }
+    }
+  )}
 }
