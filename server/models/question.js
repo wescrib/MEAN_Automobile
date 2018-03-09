@@ -24,6 +24,10 @@ var QuestionSchema = new mongoose.Schema ({
         required: [true, "User is not logged in"],
         ref: "User"
     }],
+    rank:{
+        type:Number,
+        default: 0
+    },
     rating: {
         type: Number,
         required: [true, "You need to rate the vehicle"],

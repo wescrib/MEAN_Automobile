@@ -9,8 +9,8 @@ class VehicleController {
         console.log("USER LOGGED IN",req.session.user_id);
         Vehicle.create({
             make: req.body.make.toLowerCase(),
-            model: req.body.model,
-            type: req.body.type.toLowerCase(),
+            model: req.body.model.toLowerCase(),
+            type: req.body.type,
             year: req.body.year,
             engineSize: req.body.engineSize,
             hp: req.body.hp,

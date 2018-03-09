@@ -1,8 +1,17 @@
 <div class="container">
+  <div class="question-area">
+    <div class="votes mr-2">
+      <button class="upvote mb-1 btn" (click)="upvotePost(question._id)">🢁</button><br>
+      <p class="ml-3">{{question.rank}}</p>
+      <button class="downvote btn" (click)="downvotePost(question._id)">🢃</button>
+    </div>
+    <div class="question-body">
 
-  <h1 class="my-3">{{question.description}}</h1>
-  <h4>{{question.content}}</h4>
-  <p class="mt-4">By {{question._user.first_name}}</p>
+      <h1 class="my-3">{{question.description}}</h1>
+      <h4>{{question.content}}</h4>
+      <p class="mt-4">By {{question._user.first_name}}</p>
+    </div>
+  </div>
   <hr>
   <form (submit)="createAnswer(question._id)" name="commentForm">
     <p class="answer-content"><label for="answer-content">Comment: <br> </label><textarea cols="40" rows="5" name="question" id="question" class="form-control" required minlength="6" [(ngModel)]="answer.content" #cContent="ngModel"></textarea></p>

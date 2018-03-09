@@ -12,3 +12,11 @@
     background-color: red;
     color: white;
 }
+
+.question-area{
+    display: inline-flex;
+}
+
+.question-area .votes{
+    width:100px;
+}

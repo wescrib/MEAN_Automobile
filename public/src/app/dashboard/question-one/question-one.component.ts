@@ -59,6 +59,16 @@ export class QuestionOneComponent implements OnInit {
     this._questionService.downvoteComment(answer_id, res => this.getPost())
   }
 
+  upvotePost(question_id){
+    console.log("COMPONENT: SENDING UPVOTE TO SERVICE")
+    this._questionService.upvotePost(question_id, res=> this.getPost())
+  }
+
+  downvotePost(question_id){
+    console.log("COMPONENT: SENDING DOWNVOTE TO SERVICE");
+    this._questionService.downvotePost(question_id, res => this.getPost())
+  }
+
   createAnswer(question_id){
     console.log("creating answer in sub-component", this.answer);
     this._questionService.createAnswer(this.answer, question_id).subscribe(

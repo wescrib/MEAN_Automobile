@@ -28,6 +28,22 @@ export class QuestionService {
     );
   }
 
+  upvotePost(id: string, cb){
+    console.log("SERVICE: SENDING",id,"TO BACKEND")
+    this._http.put("/reviews/up/"+id,{}).subscribe(
+      res => cb(res.json()),
+      err => console.log(err)
+    )
+  }
+
+  downvotePost(id: string, cb){
+    console.log("SERVICE: POST DOWNVOTE BEING SENT TO SERVER", id)
+    this._http.put("/reviews/down/"+id,{}).subscribe(
+      res => cb(res.json()),
+      err => console.log(err)
+    )
+  }
+
   upvoteComment(id: string, cb){
     console.log("SERVICE: COMMENT UPVOTE BEING SENT TO SERVER", id)
     this._http.put("/comment/up/"+id,{}).subscribe(

@@ -42,7 +42,7 @@ class QuestionController {
         })
     }
     oneQuestion(req, res){
-        console.log("SERVER: GETTING THE REVIEW", req.params.id);
+        // console.log("SERVER: GETTING THE REVIEW", req.params.id);
         Question.findById(req.params.id)
         .populate({path:"_user", model: "User"})            //find creator
         .populate({path: "_answers", model: "Answer",
@@ -50,10 +50,10 @@ class QuestionController {
         }})                                                 //find all answers that belong to question
         .exec((err, q)=>{
             if(err){
-                console.log("SERVER: CANNOT LOCATE POST")
+                // console.log("SERVER: CANNOT LOCATE POST")
                 return res.json({"error":"Cannot locate post"})
             }
-            console.log(q)
+            // console.log(q)
             return res.json(q)
         })
     }
@@ -61,10 +61,10 @@ class QuestionController {
     updateReview(req, res){
         Question.findByIdAndUpdate({_id: req.params.id},req.body,{upsert:false}, function(err, rev){
             if(err){
-                console.log("Server update failure")
+                // console.log("Server update failure")
                 return res.json(err);
             }else{
-                console.log("Server update success")
+                // console.log("Server update success")
                 return res.json(rev)
             }
         })
@@ -72,28 +72,33 @@ class QuestionController {
 
     revUp(req, res){
     Question.findOne({_id: req.params.question_id},(err,review)=>{
-            console.log("Finding Review...")
+            console.log("Finding Review...", req.params.question_id)
             if(err){
                 console.log("Review not found!")
                 return res.json(err);
             }
-            console.log(review.upvote.length,"upvote LENGTH")
+            // console.log(review.upvote.length,"upvote LENGTH")
             for(let i=0; i<review.upvote.length; i++){
-                console.log(review.upvote[i],"USER i")
+                // console.log(review.upvote[i],"USER i")
                 if(req.session.user_id == review.upvote[i]){
-                    console.log(review.upvote[i],"REMOVED")
+                    // console.log(review.upvote[i],"REMOVED")
+                    review.rank--;
                     review.upvote.splice(i,1);
                     review.save();
+                    // console.log("UPVOTE SUCCESS");
                     return res.json(review);
                 }
             }
             for(let i=0; i<review.downvote.length; i++){
-                console.log("USER",review.downvote[i])
+                // console.log("USER",review.downvote[i])
                 if(req.session.user_id == review.downvote[i]){
-                    console.log(review.downvote[i],"REMOVED")
+                    // console.log(review.downvote[i],"REMOVED")
                     review.downvote.splice(i,1);
                     review.upvote.push(req.session.user_id);
+                    review.rank++;
+                    review.rank++;
                     review.save();
+                    // console.log("UPVOTE SUCCESS");
                     return res.json(review);
                 }
             }
@@ -102,13 +107,14 @@ class QuestionController {
             if(req.session.user_id){
                 console.log("Pushing user_id into array")
                 review.upvote.push(req.session.user_id);
+                review.rank++;
                 console.log("Saving...")
                 review.save((err)=>{
                     if(err){
                         console.log("Save error")
                         return res.json({"status":"Did not save"})
                     }
-                    console.log("Server upvote success")
+                    // console.log("UPVOTE SUCCESS");
                     return res.json(review)
                 })
             }
@@ -127,6 +133,7 @@ class QuestionController {
                 console.log("USER",review.downvote[i])
                 if(req.session.user_id == review.downvote[i]){
                     console.log(review.downvote[i],"REMOVED")
+                    review.rank++;
                     review.downvote.splice(i,1);
                     review.save();
                     return res.json(review);
@@ -137,6 +144,8 @@ class QuestionController {
                 if(req.session.user_id == review.upvote[i]){
                     console.log(review.upvote[i],"REMOVED")
                     review.upvote.splice(i,1);
+                    review.rank--;
+                    review.rank--;
                     review.downvote.push(req.session.user_id);
                     review.save();
                     return res.json(review);
@@ -148,6 +157,7 @@ class QuestionController {
             if(req.session.user_id){
                 console.log("Pushing user_id into array")
                 review.downvote.push(req.session.user_id);
+                review.rank--;
                 console.log("Saving...")
                 review.save((err)=>{
                     if(err){

@@ -4,6 +4,7 @@ export class Question {
     description: string;
     upvote: any[];
     downvote: any[];
+    rank: number;
     rating: number;
     _user: any;
     _answers: any[];
