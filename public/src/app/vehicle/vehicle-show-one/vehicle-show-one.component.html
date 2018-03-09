@@ -1,5 +1,5 @@
 <div class="container">
-    <h2 class="my-3">{{ vehicle.year }} {{vehicle.make }} {{vehicle.model}}</h2>
+    <h2 class="my-3">{{ vehicle.year }} {{vehicle.make.charAt(0).toUpperCase()+vehicle.make.slice(1) }} {{vehicle.model.charAt(0).toUpperCase()+vehicle.model.slice(1)}}</h2>
     <div *ngFor="let avgRating of vehicle._reviews.rating; let i=index;">
 
 
@@ -13,8 +13,8 @@
         <div class="write-review" *ngIf="currentUser != null">
             <p>Write your review <a href [routerLink]="['/review/new/',vehicle._id]">here</a>!</p>
         </div>
-        <div *ngFor="let review of vehicle._reviews">
-            <h2><a class="one-review" href [routerLink]="['/review/view/',review._id]">{{review.description}}</a></h2>Rating: {{review.rating}}
+        <div *ngFor="let review of vehicle._reviews | orderBy: 'createdAt':true">
+            <h2><a class="one-review" href [routerLink]="['/review/view/',review._id]">{{review.description}}</a></h2>Rating: {{review.rating}}/5
             <p class="text-muted">{{review.content.slice(0,300)}}...</p>
         </div>
     </div>

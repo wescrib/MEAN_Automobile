@@ -11,16 +11,20 @@
       <li class="nav-item"><a class="nav-link" href [routerLink]="['/kittykatlicklick/about-us']">About Us</a></li>
       <!-- <li class="nav-item">Contact</li> -->
     </ul>
-    <div class="btn-group mx-5 " role="group" aria-label="Button group with nested dropdown">
+    <div class="form-group mx-5 " role="group" aria-label="Button group with nested dropdown">
       <!-- <button type="button" class="btn btn-outline-light">Sign In</button> -->
       <div class="login" *ngIf="currentUser == null">
         <div class="btn-group" role="group">
-          <button id="btnGroupDrop1" type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sign In</button> <button type="button" class="btn btn-outline-light"><a href [routerLink]="['/registration']">Register</a></button>
+          <button id="btnGroupDrop1" type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sign In</button> <button type="button" class="btn btn-outline-light"><a href [routerLink]="['/registration']"><span>Register</span></a></button>
           <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-            <form (submit)="loginUser()" name="myForm">
-              <input placeholder="Email" type="email" name="email" [(ngModel)]="user.email" required ng-minlength="3">
-              <input placeholder="Password" type="password" name="user.password" [(ngModel)]="user.password">
-              <input type="submit" value="Submit">
+            <form (submit)="loginUser()" name="myForm" role="form">
+              <div class="form-group">
+                <input placeholder="Email" class="form-control" type="email" name="email" [(ngModel)]="user.email" required ng-minlength="3">
+              </div>
+              <div class="form-group">
+                <input placeholder="Password" type="password" class="form-control" name="user.password" [(ngModel)]="user.password">
+              </div>
+              <button type="submit" class="btn btn-primary btn-block">Sign in</button>
             </form>
           </div>
         </div>
@@ -29,7 +33,7 @@
         <div class="btn-group" role="group">
             <button id="btnGroupDrop1" type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{currentUser.first_name[0].toUpperCase()}}{{currentUser.last_name[0].toUpperCase()}}</button>
             <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-              <a href (click)="logout()">Logout</a>
+              <a class="navlink-item" href (click)="logout()">Logout</a>
             </div>
           </div>
       </div>

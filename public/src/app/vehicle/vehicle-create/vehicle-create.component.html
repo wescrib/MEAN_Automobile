@@ -46,7 +46,7 @@
         <th scope="col">Year</th>
         <th scope="col">Body</th>
       </tr>
-      <tr class="veh-list" *ngFor="let veh of vehicles | slice: 0:10; let i=index">
+      <tr class="veh-list" *ngFor="let veh of vehicles | orderBy: 'createdAt':true | slice: 0:10; let i=index">
         <td><a href [routerLink]="['/vehicle/makeList/', veh.make]">{{veh.make.charAt(0).toUpperCase()+veh.make.slice(1)}}</a></td>
         <td><a href [routerLink]="['/vehicle/modelList/', veh.model]">{{veh.model.charAt(0).toUpperCase()+veh.model.slice(1)}}</a></td>
         <td><a href [routerLink]="['/vehicle/yearList/', veh.year]">{{veh.year}}</a></td>

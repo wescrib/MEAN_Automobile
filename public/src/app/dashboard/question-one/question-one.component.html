@@ -23,19 +23,25 @@
         <p style="color: red;">Comment must be at least 6 characters</p>
       </div>
     </div>
-    <input type="submit" value="Comment">
+    <button class="btn bg-primary" type="submit" value="Comment"><span>Submit</span></button>
   </form>
   
-  
-  <div class="comment" *ngFor="let answer of question._answers">
-    <div class="votes mr-2">
-      <button class="upvote mb-1 btn" (click)="upvote(answer._id)">🢁</button><br>
-      <button class="downvote btn" (click)="downvote(answer._id)">🢃</button>
+  <div class="com">
+    <div class="comment" *ngFor="let answer of question._answers | orderBy: 'createdAt':true">
+      <div class="votes mt-5 mr-2">
+        <button class="upvote mb-1 btn" (click)="upvote(answer._id)">🢁</button><br>
+        <button class="downvote btn" (click)="downvote(answer._id)">🢃</button>
+      </div>
+      <div class="comment-body">
+        <div *ngIf="answer.rank == 1 || answer.rank ==-1">
+          <p class="commentAuthor mt-2"><small muted-text>{{answer._user.first_name}} [ {{answer.rank}} point ]</small></p>
+        </div>
+        <div *ngIf="answer.rank > 1 || answer.rank < -1 || answer.rank==0">
+          <p class="commentAuthor mt-2"><small muted-text>{{answer._user.first_name}} [ {{answer.rank}} points ]</small></p>
+        </div>
+        <p class="commentContent pre-area">{{answer.content}}</p>
+      </div>
+      <hr>
     </div>
-    <div class="comment-body">
-      <p class="commentAuthor"><small muted-text>{{answer._user.first_name}} - {{answer.rank}}</small></p>
-      <p class="commentContent pre-area">{{answer.content}}</p>
-    </div>
-    <hr>
   </div>
 </div>

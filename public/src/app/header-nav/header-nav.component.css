@@ -1,31 +1,11 @@
-/* .header-nav {
-    margin-top: 50px;
-    background-color: rgb(75, 75, 75);
-    padding-top: 50px;
-    padding-bottom: 10px;
-    color: rgb(189, 189, 189);
-}
-
-.header-nav a{
-    color: rgb(189, 189, 189);
+a {
     text-decoration: none;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: 16pt;
 }
 
-
-.nav li {
-    display: inline;
-    margin-right: 60px;
-
+a span{
+    color: white;
 }
 
-.nav {
-    display: inline;
+a span:hover {
+    color: black;
 }
-
-
-.session-btns {
-    float: right;
-    margin-right: 30px;
-} */
