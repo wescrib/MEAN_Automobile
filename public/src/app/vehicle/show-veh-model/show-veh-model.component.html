@@ -1,6 +1,6 @@
-<h2 class="mb-3">{{veh_model}}</h2>
-
-<div class="veh-bodies">
+<div class="container">
+  <h2 class="mb-5 mt-3">{{veh_model}}</h2>
+  <div class="veh-bodies">
     <table class="table table-hover">
       <tr>
         <th scope="col">Make</th>
@@ -9,11 +9,12 @@
         <th scope="col">Reviews</th>
       </tr>
       <tr class="table-light" *ngFor="let veh of models">
-        <td><a href [routerLink]="['/vehicle/makeList/', veh.make]">{{veh.make}}</a></td>
-        <td><a href [routerLink]="['/vehicle/bodyList/', veh.body]">{{veh.body}}</a></td>
+        <td><a href [routerLink]="['/vehicle/makeList/', veh.make]">{{veh.make.charAt(0).toUpperCase()+veh.make.slice(1)}}</a></td>
+        <td><a href [routerLink]="['/vehicle/bodyList/', veh.body]">{{veh.body.charAt(0).toUpperCase()+veh.body.slice(1)}}</a></td>
         <td><a href [routerLink]="['/vehicle/yearList/', veh.year]">{{veh.year}}</a></td>
         <td><a href [routerLink]="['/vehicle/view/', veh._id]">{{veh._reviews.length}}</a></td>
-
+        
       </tr>
     </table>
   </div>
+</div>

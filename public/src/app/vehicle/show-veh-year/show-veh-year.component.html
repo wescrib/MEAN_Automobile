@@ -1,7 +1,7 @@
-<h2>{{veh_year}}</h2>
-
-<div class="veh-years">
-  <table class="table table-hover">
+<div class="container">
+  <h2>{{veh_year}}</h2>
+  <div class="veh-years">
+    <table class="table table-hover">
       <tr>
         <th scope="col">Make</th>
         <th scope="col">Model</th>
@@ -9,11 +9,12 @@
         <th scope="col">Reviews</th>
       </tr>
       <tr class="table-light" *ngFor="let veh of years">
-        <td><a href [routerLink]="['/vehicle/makeList/', veh.make]">{{veh.make}}</a></td>
-        <td><a href [routerLink]="['/vehicle/modelList/', veh.model]">{{veh.model}}</a></td>
-        <td><a href [routerLink]="['/vehicle/bodyList/', veh.body]">{{veh.body}}</a></td>
+        <td><a href [routerLink]="['/vehicle/makeList/', veh.make]">{{veh.make.charAt(0).toUpperCase()+veh.make.slice(1)}}</a></td>
+        <td><a href [routerLink]="['/vehicle/modelList/', veh.model]">{{veh.model.charAt(0).toUpperCase()+veh.model.slice(1)}}</a></td>
+        <td><a href [routerLink]="['/vehicle/bodyList/', veh.body]">{{veh.body.charAt(0).toUpperCase()+veh.body.slice(1)}}</a></td>
         <td><a href [routerLink]="['/vehicle/view/', veh._id]">{{veh._reviews.length}}</a></td>
-
+        
       </tr>
     </table>
+  </div>
 </div>

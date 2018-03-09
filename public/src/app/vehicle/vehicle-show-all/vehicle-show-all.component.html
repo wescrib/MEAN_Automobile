@@ -1,26 +1,28 @@
-<h1 class="my-4">VEHICLE INDEX</h1>
-<div class="veh-all">
-        <table class="table table-hover">
-            <tr>
-                <td><input class="mr-3" [(ngModel)] = "makeSearch" placeholder="Make"></td>
-                <td><input class="mr-3" [(ngModel)] = "modelSearch" placeholder="Model"></td>
-                <td><input  [(ngModel)] = "yearSearch" placeholder="Year"></td>
-                <td><input class="mr-3" [(ngModel)] = "bodySearch" placeholder="Body"></td>
-                <td></td>
-            </tr>
-            <tr>
-              <th scope="col">Make</th>
-              <th scope="col">Model</th>
-              <th scope="col">Year</th>
-              <th scope="col">Body</th>
-              <th scope="col">Reviews</th>
-            </tr>
-            <tr class="table-light" *ngFor="let veh of vehicles | search: makeSearch:'make' | search: modelSearch: 'model' | search: bodySearch:'body' | search: yearSearch:'year'">
-              <td><a href [routerLink]="['/vehicle/makeList/', veh.make]">{{veh.make}}</a></td>
-              <td><a href [routerLink]="['/vehicle/modelList/', veh.model]">{{veh.model}}</a></td>
-              <td><a href [routerLink]="['/vehicle/yearList/', veh.year]">{{veh.year}}</a></td>
-              <td><a href [routerLink]="['/vehicle/bodyList/', veh.body]">{{veh.body}}</a></td>
-              <td><a href [routerLink]="['/vehicle/view/', veh._id]">{{veh._reviews.length}}</a></td>
-            </tr>
-          </table>
-      </div>
+<div class="container">
+  <h1 class="my-4">Vehicle Index</h1>
+  <div class="veh-all">
+    <table class="table table-hover">
+      <tr>
+        <td><input class="mr-3" [(ngModel)] = "makeSearch" placeholder="Make"></td>
+        <td><input class="mr-3" [(ngModel)] = "modelSearch" placeholder="Model"></td>
+        <td><input  [(ngModel)] = "yearSearch" placeholder="Year"></td>
+        <td><input class="mr-3" [(ngModel)] = "bodySearch" placeholder="Body"></td>
+        <td></td>
+      </tr>
+      <tr>
+        <th scope="col">Make</th>
+        <th scope="col">Model</th>
+        <th scope="col">Year</th>
+        <th scope="col">Body</th>
+        <th scope="col">Reviews</th>
+      </tr>
+      <tr class="table-light" *ngFor="let veh of vehicles | search: makeSearch:'make' | search: modelSearch: 'model' | search: bodySearch:'body' | search: yearSearch:'year'">
+        <td><a href [routerLink]="['/vehicle/makeList/', veh.make]">{{veh.make.charAt(0).toUpperCase()+veh.make.slice(1)}}</a></td>
+        <td><a href [routerLink]="['/vehicle/modelList/', veh.model]">{{veh.model.charAt(0).toUpperCase()+veh.model.slice(1)}}</a></td>
+        <td><a href [routerLink]="['/vehicle/yearList/', veh.year]">{{veh.year}}</a></td>
+        <td><a href [routerLink]="['/vehicle/bodyList/', veh.body]">{{veh.body.charAt(0).toUpperCase()+veh.body.slice(1)}}</a></td>
+        <td><a href [routerLink]="['/vehicle/view/', veh._id]">{{veh._reviews.length}}</a></td>
+      </tr>
+    </table>
+  </div>
+</div>
