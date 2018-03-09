@@ -1,17 +1,21 @@
-<h2>{{ vehicle.year }} {{vehicle.make }} {{vehicle.model}}</h2>
-<img class="veh-rep" src="assets\images\filler.jpeg">
+<div class="container">
+    <h2 class="my-3">{{ vehicle.year }} {{vehicle.make }} {{vehicle.model}}</h2>
+    <div *ngFor="let avgRating of vehicle._reviews.rating; let i=index;">
 
-<div class="veh-reviews">
-    <div *ngIf="currentUser == null">
-        <p><a href [routerLink]="['/registration']">Sign up</a>/login to write a review</p>
-    </div>
-    <div class="write-review" *ngIf="vehicle._reviews.length==0">
-        <p>There are no reviews yet! Write one <a href [routerLink]="['/review/new/',vehicle._id]">here</a>!</p>
-    </div>
-    <div *ngFor="let review of vehicle._reviews">
-        <a class="one-review" href [routerLink]="['/review/view/',review._id]">{{review.description}}</a>
-    </div>
 
+    </div>
+    <img class="veh-rep" src="assets\images\filler.jpeg">
+    
+    <div class="veh-reviews my-3">
+        <div *ngIf="currentUser == null">
+            <p><a href [routerLink]="['/registration']">Sign up</a>/login to write a review</p>
+        </div>
+        <div class="write-review" *ngIf="currentUser != null">
+            <p>Write your review <a href [routerLink]="['/review/new/',vehicle._id]">here</a>!</p>
+        </div>
+        <div *ngFor="let review of vehicle._reviews">
+            <h2><a class="one-review" href [routerLink]="['/review/view/',review._id]">{{review.description}}</a></h2>Rating: {{review.rating}}
+            <p class="text-muted">{{review.content.slice(0,300)}}...</p>
+        </div>
+    </div>
 </div>
-
-<!-- {{vehicle | json}} -->

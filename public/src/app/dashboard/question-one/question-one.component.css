@@ -1,7 +1,14 @@
-.commentContent {
-    font-weight: bold;
+.comment{
+    margin-top: 30px;
+    display: inline-flex;
 }
 
-.commentAuthor{
-    font-size: 8pt;
+.upvote:hover {
+    background-color: green;
+    color: white;
+}
+
+.downvote:hover {
+    background-color: red;
+    color: white;
 }

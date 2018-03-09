@@ -17,6 +17,7 @@ export class VehicleShowOneComponent implements OnInit {
   vehicle: Vehicle = new Vehicle;
   currentUser: User=null;
   subscription: Subscription;
+  avgRating: string;
 
   constructor(
     private _router: Router,
@@ -32,13 +33,13 @@ export class VehicleShowOneComponent implements OnInit {
     this.getOneVeh();
     this.currentUser;
     this.inSession();
+    this.avgRating;
 
   }
 
   getOneVeh(){
     console.log("SUBCOMPONENT: SENDING INFO TO SERVICE");
     this._vS.getOneVeh(this.veh_id, vehicle => this.vehicle = vehicle);
-    console.log("NUMBER OF REVIEWS", this.vehicle._reviews);
   }
 
   inSession(){
@@ -50,5 +51,4 @@ export class VehicleShowOneComponent implements OnInit {
       }
     )
   }
-
 }

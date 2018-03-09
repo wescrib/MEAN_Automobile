@@ -1,31 +1,32 @@
-<button (click)="logout()">Logout</button>
-<h1>QUESTION FORM</h1>
-<form (submit)="createQuestion()">
-  <p><label for="question-description">Title: <br> </label><input type="text" name="description" id="description" class="form-control" required minlength="6" [(ngModel)]="question.description" #qDesc="ngModel"></p>
-  <p class="question-content"><label for="question-content">Question: <br> </label><textarea cols="40" rows="10" name="question" id="question" class="form-control" required minlength="6" [(ngModel)]="question.content" #qContent="ngModel"></textarea></p>
-      <div *ngIf="qContent.invalid && (qContent.dirty || qContent.touched)" class="alert alert-danger">
-        <div *ngIf="qContent.errors.required">
-          <p style="color: red;">Content for complaint is required</p>
-        </div>
-        <div *ngIf="qContent.errors.minlength">
-          <p style="color: red;">Complaint must be at least 6 characters</p>
-        </div>
+<div class="container">
+  <h1>Write a review</h1>
+  <form (submit)="createQuestion()">
+    <p><label for="question-description">Title: <br> </label><input type="text" name="description" id="description" class="form-control" required minlength="6" [(ngModel)]="question.description" #qDesc="ngModel"></p>
+    <p class="question-content"><label for="question-content">Question: <br> </label><textarea cols="40" rows="10" name="question" id="question" class="form-control" required minlength="6" [(ngModel)]="question.content" #qContent="ngModel"></textarea></p>
+    <div *ngIf="qContent.invalid && (qContent.dirty || qContent.touched)" class="alert alert-danger">
+      <div *ngIf="qContent.errors.required">
+        <p style="color: red;">Content for complaint is required</p>
       </div>
-      <!-- <div id="rating">
-        <span>★</span>
-        <span>★</span>
-        <span>★</span>
-        <span>★</span>
-        <span>★</span>
-      </div> -->
-      <div class="rating">
-        <select class="rating" name="rating" required [(ngModel)]="question.rating">
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-        </select>
+      <div *ngIf="qContent.errors.minlength">
+        <p style="color: red;">Complaint must be at least 6 characters</p>
       </div>
+    </div>
+    <!-- <div id="rating">
+      <span>★</span>
+      <span>★</span>
+      <span>★</span>
+      <span>★</span>
+      <span>★</span>
+    </div> -->
+    <div class="rating">
+      <select class="rating" name="rating" required [(ngModel)]="question.rating">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+    </div>
     <input type="submit" value="Submit">
-</form>
+  </form>
+</div>

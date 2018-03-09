@@ -44,7 +44,7 @@ export class QuestionCreateComponent implements OnInit {
     // this.question._vehicle = this.veh_id;
     // console.log("REVIEW BEING MADE WITH VEHID: ", this.question._vehicle);
     this._questionService.createQuestion(this.question, this.veh_id).subscribe(
-      res => this._router.navigateByUrl("/"),
+      res => this._router.navigateByUrl("/vehicle/view/"+ this.veh_id),
       error => console.log(error)
     );
   }

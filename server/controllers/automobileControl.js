@@ -8,13 +8,13 @@ class VehicleController {
         console.log("Attempting to build vehicle");
         console.log("USER LOGGED IN",req.session.user_id);
         Vehicle.create({
-            make: req.body.make,
+            make: req.body.make.toLowerCase(),
             model: req.body.model,
-            type: req.body.type,
+            type: req.body.type.toLowerCase(),
             year: req.body.year,
             engineSize: req.body.engineSize,
             hp: req.body.hp,
-            body: req.body.body,
+            body: req.body.body.toLowerCase(),
             _user: req.session.user_id}, (err, vehicle)=>{
             if(err){
                 console.log("SERVER: VEHICLE BUILD FAILURE")

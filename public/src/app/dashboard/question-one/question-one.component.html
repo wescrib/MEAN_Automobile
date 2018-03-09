@@ -1,40 +1,32 @@
-<button [routerLink]="['/dashboard/post']">Add a complaint</button><button [routerLink]="['/dashboard']">Home</button><button (click)="logout()">Logout</button>
-<h1>{{question.description}}</h1>
-<h4>{{question.content}}</h4>
-<p>By {{question._user.first_name}}</p>
-<hr>
-<h5>COMMENTS</h5>
-<form (submit)="createAnswer(question._id)" name="commentForm">
+<div class="container">
+
+  <h1 class="my-3">{{question.description}}</h1>
+  <h4>{{question.content}}</h4>
+  <p class="mt-4">By {{question._user.first_name}}</p>
+  <hr>
+  <form (submit)="createAnswer(question._id)" name="commentForm">
     <p class="answer-content"><label for="answer-content">Comment: <br> </label><textarea cols="40" rows="5" name="question" id="question" class="form-control" required minlength="6" [(ngModel)]="answer.content" #cContent="ngModel"></textarea></p>
-        <div *ngIf="cContent.invalid && (cContent.dirty || cContent.touched)" class="alert alert-danger">
-          <div *ngIf="cContent.errors.required">
-            <p style="color: red;">Content for comment is required</p>
-          </div>
-          <div *ngIf="cContent.errors.minlength">
-            <p style="color: red;">Comment must be at least 6 characters</p>
-          </div>
-        </div>
-      <input type="submit" value="Comment">
-  </form>
-
-
-<div *ngFor="let answer of question._answers">
-  <!-- {{answer | json}} -->
-    <p class="commentContent">{{answer.content}}</p>
-      <div class="votes">
-        <button class="upvote" (click)="upvote(answer._id)">🢁</button>
-        {{answer.rank}}
-        <button class="downvote" (click)="downvote(answer._id)">🢃</button>
+    <div *ngIf="cContent.invalid && (cContent.dirty || cContent.touched)" class="alert alert-danger">
+      <div *ngIf="cContent.errors.required">
+        <p style="color: red;">Content for comment is required</p>
       </div>
-    <p class="commentAuthor">By {{answer._user.first_name}}</p>
-    <div *ngIf="answer.upvote.length == 1">
-      <p>1 person likes this</p>
+      <div *ngIf="cContent.errors.minlength">
+        <p style="color: red;">Comment must be at least 6 characters</p>
+      </div>
     </div>
-    <div *ngIf="answer.downvote.length == 1">
-      <p>1 person dislikes this</p>
+    <input type="submit" value="Comment">
+  </form>
+  
+  
+  <div class="comment" *ngFor="let answer of question._answers">
+    <div class="votes mr-2">
+      <button class="upvote mb-1 btn" (click)="upvote(answer._id)">🢁</button><br>
+      <button class="downvote btn" (click)="downvote(answer._id)">🢃</button>
     </div>
-    <div *ngIf="answer.upvote.length >= 2">
-      <p>{{answer.like.length}} people like this</p>
+    <div class="comment-body">
+      <p class="commentAuthor"><small muted-text>{{answer._user.first_name}} - {{answer.rank}}</small></p>
+      <p class="commentContent">{{answer.content}}</p>
     </div>
     <hr>
+  </div>
 </div>
