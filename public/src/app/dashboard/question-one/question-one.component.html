@@ -8,7 +8,7 @@
     <div class="question-body">
 
       <h1 class="my-3">{{question.description}}</h1>
-      <h4>{{question.content}}</h4>
+      <h4 class="pre-area">{{question.content}}</h4>
       <p class="mt-4">By {{question._user.first_name}}</p>
     </div>
   </div>
@@ -34,7 +34,7 @@
     </div>
     <div class="comment-body">
       <p class="commentAuthor"><small muted-text>{{answer._user.first_name}} - {{answer.rank}}</small></p>
-      <p class="commentContent">{{answer.content}}</p>
+      <p class="commentContent pre-area">{{answer.content}}</p>
     </div>
     <hr>
   </div>

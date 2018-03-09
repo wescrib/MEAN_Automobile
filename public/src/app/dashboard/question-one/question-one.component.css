@@ -15,8 +15,13 @@
 
 .question-area{
     display: inline-flex;
+    margin-top: 20px;
 }
 
 .question-area .votes{
     width:100px;
+}
+
+.pre-area{
+    white-space: pre-wrap
 }
