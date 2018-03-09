@@ -1,12 +1,21 @@
 .content {
+    /* display: inline-flex; */
+    width: 1000px;
+    margin: auto;
+    /* background-color: gray; */
+}
+
+/* .veh-build{
+    width: 400px;
+} */
+
+#veh-build-form {
+    width: 1000px;
+    /* background-color: rgb(48, 48, 48); */
     display: inline-flex;
 }
 
-.veh-build{
-    width: 400px;
-}
-
-.recent_builds{
-    width: 300px;
-    margin-left: 100px;
+form{
+    width: 800px;
+    margin: auto;
 }

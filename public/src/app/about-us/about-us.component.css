@@ -1,0 +1,34 @@
+.header{
+    width: 1000px;
+    margin: auto;
+}
+
+.header img {
+    width: 1000px;
+    margin: auto;
+}
+
+#content {
+    width: 1000px;
+    margin: auto;
+    height: 700px;
+
+
+}
+#images {
+    width: 120px;
+
+
+}
+#images img {
+    width: 100px;
+
+}
+
+#text-header {
+    font-size: 42pt;
+}
+
+.content-text{
+    padding-top: 40px;
+}
