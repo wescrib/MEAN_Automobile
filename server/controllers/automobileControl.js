@@ -15,6 +15,7 @@ class VehicleController {
             engineSize: req.body.engineSize,
             hp: req.body.hp,
             body: req.body.body.toLowerCase(),
+            // src: req.body.src,
             _user: req.session.user_id}, (err, vehicle)=>{
             if(err){
                 console.log("SERVER: VEHICLE BUILD FAILURE")

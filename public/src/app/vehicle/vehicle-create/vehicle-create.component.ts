@@ -38,10 +38,11 @@ export class VehicleCreateComponent implements OnInit {
   }
 
   buildVeh(){
+    // this.vehicle['type']=data.type
     console.log("SUB-COMPONENT: ATTEMPTING TO BUILD VEHICLE:\n", this.vehicle);
     this._vS.createVehicle(this.vehicle).subscribe(
-      // res => this._router.navigateByUrl("/vehicles"),
       res => this.vehList(),
+      // res => console.log(this.vehicle),
       error => console.log(error)
     );
   }
@@ -58,5 +59,9 @@ export class VehicleCreateComponent implements OnInit {
         this.currentUser = res.json();
       }
     )
+  }
+
+  uploadImg(data){
+
   }
 }

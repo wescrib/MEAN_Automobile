@@ -6,6 +6,7 @@ export class Vehicle {
     engineSize: number;
     hp: number;
     body: string;
+    // src: string;
     _user: any;
     _reviews: any[];
     createdAt: any;

@@ -8,7 +8,7 @@ var app = express();
 // app.set("view engine", "ejs");
 // app.set("views", __dirname + "/client/views");
 app.use(express.static(__dirname + "/public/dist"));
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({limit: "50mb", extended: true}));
 
 //sends raw data as jason data to the backend. this will effect the way you test data in postman
 app.use(bodyParser.json());
