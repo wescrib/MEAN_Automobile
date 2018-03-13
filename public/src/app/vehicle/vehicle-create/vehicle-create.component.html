@@ -1,7 +1,7 @@
 <div class="content">
   <div class="veh-build">
     <h2 class="m-4 text-center">Build Vehicle</h2>
-    <form (submit)="buildVeh(data)" name="buildVeh" class="m-5">
+    <form (submit)="buildVeh()" name="buildVeh" class="m-5">
       <div id="veh-build-form">
         <div class="paras">
           <p class="veh-make"><input type="text" placeholder="*Make" name="make" required [(ngModel)]="vehicle.make"></p>
@@ -34,9 +34,9 @@
           <p class="veh-hp"><input type="text" placeholder="Horpsepower (optional)" [(ngModel)]="vehicle.hp" name="hp"></p>
         </div>
       </div>
-      <!-- <div class="img-upload">
-          <image-upload buttonCaption="Add a Image" dropBoxMessage="10Mb Limit" [max]="1" [maxFileSize]="1000000000" name="src"></image-upload>
-      </div> -->
+      <div class="img-upload">
+          <image-upload buttonCaption="Add a Image" dropBoxMessage="10Mb Limit" [max]="1" [maxFileSize]="1000000000" (uploadFinished)="onUploadStatus($event)"></image-upload>
+      </div>
       <p class="mb-5"><button type="submit" class="btn btn-primary float-right">Submit</button></p>
     </form>
   </div>

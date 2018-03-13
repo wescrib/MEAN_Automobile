@@ -42,10 +42,14 @@ export class VehicleCreateComponent implements OnInit {
     console.log("SUB-COMPONENT: ATTEMPTING TO BUILD VEHICLE:\n", this.vehicle);
     this._vS.createVehicle(this.vehicle).subscribe(
       res => this.vehList(),
-      // res => console.log(this.vehicle),
       error => console.log(error)
     );
   }
+
+  onUploadStatus($event){
+    this.vehicle = $event
+  }
+
   vehList(){
     console.log("SUBCOMPONENT: SENDING REQUEST TO SERVICE FOR LIST OF VEHICLES");
     document.forms["buildVeh"].reset()

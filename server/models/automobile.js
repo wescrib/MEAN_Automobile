@@ -41,10 +41,10 @@ var AutoSchema = new mongoose.Schema({
         minlength: [3, "Body needs to be at least 3 character"],
         maxlength: [20, "Body is likely not more than 20 characters"]
     },
-    // src: {
-    //     type: String,
-    //     required: [true, "Missing the image"]
-    // },
+    src: {
+        type: String,
+        required: [true, "Missing the image"]
+    },
     _user: {
         type: mongoose.Schema.Types.ObjectId,
         required: [true, "Cannot build vehicle because no one is logged in"],
