@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../server/controllers/user.service';
 import { User } from '../../server/models/user';
 import { Router } from '@angular/router';
+import { Http } from '@angular/http';
 
 @Component({
   selector: 'app-user-create',
@@ -16,7 +17,8 @@ export class UserCreateComponent implements OnInit {
 
   constructor(
     _userService: UserService,
-    _router: Router
+    _router: Router,
+    private _http: Http
   ) {
     this._userService = _userService;
     this.user = new User 
@@ -27,10 +29,21 @@ export class UserCreateComponent implements OnInit {
   }
 
   registerUser(){
+    // this._http.get("/users/lookup/"+this.user.email)
+
     console.log("hit sub service",this.user)
     this._userService.create(this.user).subscribe(
-      res => this._router.navigateByUrl("/"),
-      err => console.log(err)
+      // res => this._router.navigateByUrl("/"),
+      (res)=>{
+        if(res.json().error){
+          this.errors.length = 0;
+          this.errors.push("Email already in use.");
+          console.log(this.errors);
+        } else {
+          this._router.navigateByUrl("/")
+        }
+      }
+      // err => console.log(err)
     )
   }
 

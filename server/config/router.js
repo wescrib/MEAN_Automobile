@@ -11,6 +11,7 @@ module.exports = function(app){
     app.delete("/logout", Users.logout);
     app.get("/users/all", Users.all);
     app.get("/users/show/:id", Users.showOne);
+    app.get("/users/lookup/:email", Users.showOneByEmail);
 
     /**************** REVIEWS ********************/
     app.post("/reviews/create/:veh_id", Questions.create);

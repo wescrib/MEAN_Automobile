@@ -86,6 +86,16 @@ class UsersController {
             return res.json(user);
         }
     )}
+
+    showOneByEmail(req,res){
+        console.log("looking for email")
+        User.findOne({email: req.params.email}).populate({path:"_questions", model: "Question"}).exec((err, user) => {
+            if(err){
+                return res.json(err);
+            }
+            return res.json(user);
+        }
+    )}
     
 }
 

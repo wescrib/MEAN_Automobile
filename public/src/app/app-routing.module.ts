@@ -20,10 +20,10 @@ import { VehicleShowAllComponent } from './vehicle/vehicle-show-all/vehicle-show
 import { AboutUsComponent } from './about-us/about-us.component';
 
 const routes: Routes = [
-  {
-    path: "registration",
-    component: UserCreateComponent,
-  },
+  // {
+  //   path: "registration",
+  //   component: UserCreateComponent,
+  // },
   {
     path:"",
     component: HeaderNavComponent,
@@ -38,7 +38,8 @@ const routes: Routes = [
       {path:"review/new/:veh_id", component: QuestionCreateComponent},
       {path:"review/view/:rev_id", component: QuestionOneComponent},
       {path:"vehicles/reviews/all", component: VehicleShowAllComponent},
-      {path: "kittykatlicklick/about-us", component:AboutUsComponent}
+      {path: "kittykatlicklick/about-us", component:AboutUsComponent},
+      {path: "registration", component: UserCreateComponent}
     
     ],
   },
