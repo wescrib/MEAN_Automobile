@@ -30,7 +30,7 @@ export class UserCreateComponent implements OnInit {
     console.log("hit sub service",this.user)
     this._userService.create(this.user).subscribe(
       res => this._router.navigateByUrl("/"),
-      error => console.log(error)
+      err => console.log(err)
     )
   }
 

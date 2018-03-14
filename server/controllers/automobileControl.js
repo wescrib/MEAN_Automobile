@@ -5,9 +5,7 @@ var Vehicle = mongoose.model("Vehicle");
 class VehicleController {
     //CREATE VEHICLE
     createVehicle(req, res){
-        console.log("Attempting to build vehicle");
-        console.log("USER LOGGED IN",req.session.user_id);
-        Vehicle.create({
+        Vehicle.findOne({
             make: req.body.make.toLowerCase(),
             model: req.body.model.toLowerCase(),
             type: req.body.type,
@@ -15,14 +13,31 @@ class VehicleController {
             engineSize: req.body.engineSize,
             hp: req.body.hp,
             body: req.body.body.toLowerCase(),
-            src: req.body.src,
-            _user: req.session.user_id}, (err, vehicle)=>{
-            if(err){
-                console.log("SERVER: VEHICLE BUILD FAILURE")
-                return res.json(err)
-            }
-            console.log("SERVER: VEHICLE BUILD SUCCESS")
-            return res.json(vehicle)
+
+        }, (err, usedVeh)=>{
+            if(usedVeh){
+                return res.json({error: "Vehicle already built"})
+            }else{
+                console.log("Attempting to build vehicle");
+                console.log("USER LOGGED IN",req.session.user_id);
+                Vehicle.create({
+                    make: req.body.make.toLowerCase(),
+                    model: req.body.model.toLowerCase(),
+                    type: req.body.type,
+                    year: req.body.year,
+                    engineSize: req.body.engineSize,
+                    hp: req.body.hp,
+                    body: req.body.body.toLowerCase(),
+                    src: req.body.src,
+                    _user: req.session.user_id}, (err, vehicle)=>{
+                    if(err){
+                        console.log("SERVER: VEHICLE BUILD FAILURE")
+                        return res.json(err)
+                    }
+                    console.log("SERVER: VEHICLE BUILD SUCCESS")
+                    return res.json(vehicle)
+                }
+            )}
         })
     }
     //LIST ALL VEHICLES
