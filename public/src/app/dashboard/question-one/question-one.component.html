@@ -13,19 +13,29 @@
     </div>
   </div>
   <hr>
-  <form (submit)="createAnswer(question._id)" name="commentForm">
-    <p class="answer-content"><label for="answer-content">Comment: <br> </label><textarea cols="40" rows="5" name="question" id="question" class="form-control" required minlength="6" [(ngModel)]="answer.content" #cContent="ngModel"></textarea></p>
-    <div *ngIf="cContent.invalid && (cContent.dirty || cContent.touched)" class="alert alert-danger">
-      <div *ngIf="cContent.errors.required">
-        <p style="color: red;">Content for comment is required</p>
-      </div>
-      <div *ngIf="cContent.errors.minlength">
-        <p style="color: red;">Comment must be at least 6 characters</p>
-      </div>
-    </div>
-    <button class="btn bg-primary" type="submit" value="Comment"><span>Submit</span></button>
-  </form>
   
+  <div>
+    <div class="noSession" *ngIf="currentUser == null">
+      <p><a href [routerLink]="['/registration']">Register</a> to comment!</p>
+    </div>
+      <form (submit)="createAnswer(question._id)" name="commentForm">
+        <p class="answer-content"><label for="answer-content">Comment: <br> </label><textarea cols="40" rows="5" name="question" id="question" class="form-control" required minlength="2" [(ngModel)]="answer.content" #cContent="ngModel"></textarea></p>
+        <!-- <div *ngIf="cContent.invalid && (cContent.dirty || cContent.touched)" class="alert alert-danger"> -->
+          <!-- <div *ngIf="cContent.errors.minlength">
+            <p style="color: red;">Comment must be at least 6 characters</p>
+          </div> -->
+        <!-- </div> -->
+        <div class="noSession" *ngIf="currentUser == null">
+          <button class="btn bg-primary" type="submit" value="Comment" disabled><span>Submit</span></button>
+        </div>
+        <div class="inSession" *ngIf="currentUser != null">
+          <button class="btn bg-primary" type="submit" value="Comment"><span>Submit</span></button>
+        </div>
+        
+      </form>
+      
+  </div>
+
   <div class="com">
     <div class="comment" *ngFor="let answer of question._answers | orderBy: 'createdAt':true">
       <div class="votes mt-5 mr-2">

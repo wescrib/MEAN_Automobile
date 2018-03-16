@@ -71,11 +71,15 @@ export class QuestionOneComponent implements OnInit {
 
   createAnswer(question_id){
     console.log("creating answer in sub-component", this.answer);
-    this._questionService.createAnswer(this.answer, question_id).subscribe(
-      // res => this._router.navigateByUrl("/dashboard/post/"+question_id),
-      res => this.getPost(),
-      error => console.log(error)
-    );
+    if(this.answer.content.length > 0){
+      this._questionService.createAnswer(this.answer, question_id).subscribe(
+        // res => this._router.navigateByUrl("/dashboard/post/"+question_id),
+        res => this.getPost(),
+        error => console.log(error)
+      );
+    } else {
+      console.log("nothing input in comment")
+    }
   }
 
   // sortedLikes(){

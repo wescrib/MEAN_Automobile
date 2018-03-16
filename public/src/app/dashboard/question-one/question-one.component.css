@@ -36,3 +36,8 @@
 span{
     color: white;
 }
+
+.noSession p {
+    text-align: center;
+    font-weight: bold;
+}

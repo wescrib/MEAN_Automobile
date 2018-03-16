@@ -15,9 +15,9 @@ var AutoSchema = new mongoose.Schema({
     },
     type:{
         type: String,
-        required: false,
-        minlength: [2, "Type must be at least 2 characters"],
-        maxlength: [20, "Doubt the type needs to be longer than 20 characters"]
+        default: null,
+        // minlength: [2, "Type must be at least 2 characters"],
+        maxlength: [100, "Doubt the type needs to be longer than 100 characters"]
     },
     year: {
         type: Number,

@@ -55,6 +55,9 @@
       <div *ngIf="user.password == user.confirm_pw && user.confirm_pw != null">
         <p style="color:green">Match!</p>
       </div>
+      <div *ngIf="registerForm.invalid || user.password != user.confirm_pw">
+        <p class="submit"><button class="btn" type="submit" disabled>Register</button></p>
+      </div>
       <div *ngIf="registerForm.valid && user.password == user.confirm_pw">
         <p class="submit"><button class="btn" type="submit">Register</button></p>
       </div>

@@ -5,6 +5,7 @@ var Vehicle = mongoose.model("Vehicle");
 class VehicleController {
     //CREATE VEHICLE
     createVehicle(req, res){
+        console.log(req.body)
         Vehicle.findOne({
             make: req.body.make.toLowerCase(),
             model: req.body.model.toLowerCase(),

@@ -19,6 +19,7 @@ export class VehicleCreateComponent implements OnInit {
   private user: User;
   currentUser: User=null;
   private _uS: UserService;
+  errors: string[] = []
 
 
 
@@ -41,8 +42,19 @@ export class VehicleCreateComponent implements OnInit {
     // this.vehicle['type']=data.type
     console.log("SUB-COMPONENT: ATTEMPTING TO BUILD VEHICLE:\n", this.vehicle);
     this._vS.createVehicle(this.vehicle).subscribe(
-      res => this.vehList(),
-      error => console.log(error)
+      // res => this.vehList(),
+      // error => console.log(error)
+      (res)=>{
+        if(res.json().error){
+          console.log(res.json().error)
+          this.errors.length=0;
+          this.errors.push("Vehicle already on record");
+          console.log(this.errors);
+        }else{
+          this.errors.pop();
+          this.vehList();
+        }
+      }
     );
   }
 

@@ -33,17 +33,16 @@ export class UserCreateComponent implements OnInit {
 
     console.log("hit sub service",this.user)
     this._userService.create(this.user).subscribe(
-      // res => this._router.navigateByUrl("/"),
       (res)=>{
         if(res.json().error){
           this.errors.length = 0;
           this.errors.push("Email already in use.");
           console.log(this.errors);
         } else {
+          location.reload()
           this._router.navigateByUrl("/")
         }
       }
-      // err => console.log(err)
     )
   }
 

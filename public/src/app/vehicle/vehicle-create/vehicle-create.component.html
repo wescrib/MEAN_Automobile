@@ -2,11 +2,15 @@
   <div class="veh-build">
     <h2 class="m-4 text-center">Build Vehicle</h2>
     <form (submit)="buildVeh()" name="buildVeh" class="m-5">
+      <div class="img-upload my-3">
+        <p class="text-muted">*Add an Image</p>
+          <image-upload buttonCaption="Add a Image" dropBoxMessage="10Mb Limit" [max]="1" [maxFileSize]="1000000000" (uploadFinished)="onUploadStatus($event)"></image-upload>
+      </div>
       <div id="veh-build-form">
         <div class="paras">
           <p class="veh-make"><input type="text" placeholder="*Make" name="make" required [(ngModel)]="vehicle.make"></p>
           <p class="veh-model"><input type="text" placeholder="*Model" name="model" required [(ngModel)]="vehicle.model"></p>
-          <p class="veh-type"><input type="text" placeholder="Type (optional)" name="type" [(ngModel)]="vehicle.type"></p>
+          <p class="veh-type"><input type="text" placeholder="Trim (optional)" name="type" [(ngModel)]="vehicle.type"></p>
           <p class="veh-year"><input type="text" placeholder="*Year" required name="year"[(ngModel)]="vehicle.year"></p>
         </div>
         <div class="form-table" class="mx-5">
@@ -29,16 +33,14 @@
           </table>
         </div>
         <br>
-        <div class="optionals">
+        <!-- <div class="optionals">
           <p class="veh-eng-size"><input type="text" placeholder="Engine Size (optional)" [(ngModel)]="vehicle.engineSize" name="engineSize"></p>
           <p class="veh-hp"><input type="text" placeholder="Horpsepower (optional)" [(ngModel)]="vehicle.hp" name="hp"></p>
-        </div>
-      </div>
-      <div class="img-upload">
-          <image-upload buttonCaption="Add a Image" dropBoxMessage="10Mb Limit" [max]="1" [maxFileSize]="1000000000" (uploadFinished)="onUploadStatus($event)"></image-upload>
+        </div> -->
       </div>
       <p class="mb-5"><button type="submit" class="btn btn-primary float-right">Submit</button></p>
     </form>
+    <p *ngIf="errors.length > 0" class="errors">{{errors}}</p>
   </div>
   <div class="recent_builds">
     <h3 class="my-4">Recent Vehicle Builds</h3>
@@ -48,12 +50,14 @@
         <th scope="col">Model</th>
         <th scope="col">Year</th>
         <th scope="col">Body</th>
+        <th scope="col">Trim</th>
       </tr>
       <tr class="veh-list" *ngFor="let veh of vehicles | orderBy: 'createdAt':true | slice: 0:10; let i=index">
         <td><a href [routerLink]="['/vehicle/makeList/', veh.make]">{{veh.make.charAt(0).toUpperCase()+veh.make.slice(1)}}</a></td>
         <td><a href [routerLink]="['/vehicle/modelList/', veh.model]">{{veh.model.charAt(0).toUpperCase()+veh.model.slice(1)}}</a></td>
         <td><a href [routerLink]="['/vehicle/yearList/', veh.year]">{{veh.year}}</a></td>
         <td><a href [routerLink]="['/vehicle/bodyList/', veh.body]">{{veh.body.charAt(0).toUpperCase()+veh.body.slice(1)}}</a></td>
+        <td *ngIf="veh.type != null">{{veh.type.charAt(0).toUpperCase()+veh.type.slice(1)}}</td>
       </tr>
     </table>
   </div>

@@ -42,22 +42,10 @@
 
 
     </div>
-    <form class="form-inline my-2 my-lg-0" action="http://search.yahoo.com/bin/search">
+    <!-- <form class="form-inline my-2 my-lg-0" action="http://search.yahoo.com/bin/search/" method="POST">
       <input class="form-control mr-sm-2" type="text" placeholder="Search">
       <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-    </form>
+    </form> -->
   </div>      
-      <!-- <div class="session-btns">
-        <div *ngIf="currentUser != null">
-          <a href [routerLink]="['#']">Home</a> | <a href (click)="logout()">Logout</a>
-        </div>
-        <div *ngIf="currentUser == null">
-          <a href [routerLink]="['/registration']">Register</a> | <a href [routerLink]="['/registration']">Login</a>
-        </div>
-      </div> -->
 </nav>
-
-<!-- <div class="logout" *ngIf="currentUser != null || currentUser != undefined">
-  <button (click)="logout()">Logout</button>
-</div> -->
 <router-outlet></router-outlet>
