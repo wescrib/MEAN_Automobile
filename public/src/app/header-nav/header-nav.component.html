@@ -48,4 +48,7 @@
     </form> -->
   </div>      
 </nav>
+<div *ngIf="errors.length > 0" class="errors mt-1 mr-5">
+  <p *ngFor="let err of errors" class="btn-outline-danger float-right">{{err}}</p>
+</div>
 <router-outlet></router-outlet>

@@ -1,5 +1,5 @@
 <div class="container">
-    <h2 class="my-3">{{ vehicle.year }} {{vehicle.make.charAt(0).toUpperCase()+vehicle.make.slice(1) }} {{vehicle.model.charAt(0).toUpperCase()+vehicle.model.slice(1)}} {{vehicle.type}}</h2>
+    <h2 class="my-3">{{ vehicle.year }} {{vehicle.make.charAt(0).toUpperCase()+vehicle.make.slice(1) }} {{vehicle.model.charAt(0).toUpperCase()+vehicle.model.slice(1)}} <span *ngIf="vehicle.type != null">{{ vehicle.type.charAt(0).toUpperCase()+vehicle.type.slice(1) }}</span></h2>
     <div *ngFor="let avgRating of vehicle._reviews.rating; let i=index;">
 
 

@@ -23,6 +23,14 @@ export class MakeSearchPipe implements PipeTransform {
       else if(attr=="year"){
         return list.year.toString().includes(searchText);
       }
+      else if(attr=="type"){
+        if(list.type == null){
+          list.type = "No Trim"
+          return list.type.toLowerCase().includes(searchText);
+        }else{
+          return list.type.toLowerCase().includes(searchText);
+        }
+      }
     })
   }
 }

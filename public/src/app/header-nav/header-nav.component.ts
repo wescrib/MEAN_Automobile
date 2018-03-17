@@ -16,6 +16,7 @@ export class HeaderNavComponent implements OnInit {
   private _http: Http;
   private _router: Router;
   private user: User;
+  errors: string[] = []
 
   constructor(
     _router: Router,
@@ -46,10 +47,12 @@ export class HeaderNavComponent implements OnInit {
   }
   loginUser(){
     console.log("login info hit sub component",this.user)
+    this.errors.length = 0;
     this._userService.login(this.user, (res) => {
-      console.log(res);
-      if(res.status){
-        console.log("THIS IS AN ERROR MESSAGE: "+ res)
+      if(res.error){
+        console.log("THIS IS A LOGIN ERROR MESSAGE: "+ res.error)
+        this.errors.push(res.error);
+        console.log(this.errors)
       }else{
         location.reload()
       }
