@@ -72,6 +72,10 @@ export class QuestionService {
     return this._http.post("/reviews/"+question_id+"/comment/new", answer);
   }
 
+  delete(id: string, veh_id: string){
+    return this._http.delete("/reviews/delete/" + id + "/" + veh_id)
+  }
+
   // sortedAnswers(question_id: string, cb){
   //   console.log(question_id," | question id from service");
   //   return this._http.get("/answer/all/"+question_id).subscribe(

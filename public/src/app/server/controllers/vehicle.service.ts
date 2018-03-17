@@ -66,4 +66,8 @@ export class VehicleService {
     );
   }
 
+  delete(id: string){
+    return this._http.delete("/vehicle/remove/" + id)
+  }
+
 }

@@ -43,11 +43,35 @@ export class VehicleShowAllComponent implements OnInit {
 
   ngOnInit() {
     this.vehList();
+    this.currentUser;
+    this.inSession();
   }
 
   vehList(){
     console.log("SUBCOMPONENT: SENDING REQUEST TO SERVICE FOR LIST OF VEHICLES");
     this._vS.vehIndex((vehicles)=> this.vehicles = vehicles);
+  }
+
+  inSession(){
+    this._uS.getUser().subscribe(
+      res => {
+        console.log(res.json(),"IS LOGGED IN");
+        this.currentUser = res.json();
+        console.log("NAVIGATION",this.currentUser)
+      }
+    )
+  }
+
+  deleteVeh(id: string){
+    var conf = confirm("Are you sure you want to delete this vehicle?");
+    if(conf == true){
+      this._vS.delete(id).subscribe(
+        review => this.vehList(),
+        error => console.log(error)
+      )
+    }else{
+      console.log("Review was not deleted")
+    }
   }
 
 }

@@ -14,7 +14,8 @@
         <td scope="row"><a href [routerLink]="['/vehicle/modelList/', veh.model]">{{veh.model.charAt(0).toUpperCase()+veh.model.slice(1)}}</a></td>
         <td><a href [routerLink]="['/vehicle/bodyList/', veh.body]">{{veh.body.charAt(0).toUpperCase()+veh.body.slice(1)}}</a></td>
         <td><a href [routerLink]="['/vehicle/yearList/', veh.year]">{{veh.year}}</a></td>
-        <td>{{veh.type.charAt(0).toUpperCase()+veh.type.slice(1)}}</td>
+        <td *ngIf="veh.type != null">{{veh.type.charAt(0).toUpperCase()+veh.type.slice(1)}}</td>
+        <td *ngIf="veh.type == null" class="text-muted">No Trim</td>
         <td><a href [routerLink]="['/vehicle/view/', veh._id]">{{veh._reviews.length}}</a></td>
       </tr>
     </table>

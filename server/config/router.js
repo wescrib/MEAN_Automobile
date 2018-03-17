@@ -19,7 +19,7 @@ module.exports = function(app){
     app.get("/reviews/:id", Questions.oneQuestion)
     app.put("/reviews/up/:question_id", Questions.revUp);
     app.put("/reviews/down/:question_id", Questions.revDown);
-    app.delete("/reviews/delete/:rev_id", Questions.deleteReview);
+    app.delete("/reviews/delete/:rev_id/:veh_id", Questions.deleteReview);
     app.put("/reviews/update/:rev_id", Questions.updateReview);
 
 

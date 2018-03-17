@@ -51,4 +51,16 @@ export class VehicleShowOneComponent implements OnInit {
       }
     )
   }
+
+  deleteRev(id: string, veh_id: string){
+    var conf = confirm("Are you sure you want to delete this review?");
+    if(conf == true){
+      this._rS.delete(id, veh_id).subscribe(
+        review => this.getOneVeh(),
+        error => console.log(error)
+      )
+    }else{
+      console.log("Review was not deleted")
+    }
+  }
 }

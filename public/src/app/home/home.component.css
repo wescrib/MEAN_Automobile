@@ -9,10 +9,12 @@ a {
     text-decoration: none;
 }
 
-.secondary-news{
+/* .secondary-news{
     display: inline-flex;
-}
+} */
 
 .article {
     width: 500px;
+    display: inline-block;
+    margin: 20px;
 }

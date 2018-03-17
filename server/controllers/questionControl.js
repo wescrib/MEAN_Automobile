@@ -172,12 +172,31 @@ class QuestionController {
     )}
 
     deleteReview(req,res){
-        console.log("Server delete of review ID:", req.params.rev_id)
+        // console.log("Server delete of review ID:", req.params.rev_id)
         Question.deleteOne({_id: req.params.rev_id}, (err, review)=>{
             if(err){
-                console.log("Server delete failure")
+                // console.log("Server delete failure")
                 res.json(err)
             }
+            console.log("THIS IS THE VEH ID", req.params.veh_id)
+            Vehicle.findOne({_id: req.params.veh_id }, (err, veh)=>{
+                // console.log("am i making it this far?????")
+                if(err){
+                    // console.log("im hitting the error")
+                    res.json(err)
+                }else{
+                    // console.log("review length is", veh._reviews.length)
+                    for(let i=0; i<veh._reviews.length; i++){
+                        console.log("THIS IS REV ID",veh._reviews[i])
+
+                        if(req.params.rev_id == veh._reviews[i]){
+                            console.log("FOUND A MATCH!")
+                            veh._reviews.splice(i,1);
+                            veh.save();
+                        }
+                    }
+                }
+            })
             Answer.deleteMany({_question: req.params.rev_id}, (err, a)=>{
                 if(err){
                     console.log("SERVER: COULD NOT DELETE COMMENTS FOR REVIEW")

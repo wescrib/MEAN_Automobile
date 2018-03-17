@@ -13,7 +13,8 @@
         <td><a href [routerLink]="['/vehicle/makeList/', veh.make]">{{veh.make.charAt(0).toUpperCase()+veh.make.slice(1)}}</a></td>
         <td><a href [routerLink]="['/vehicle/bodyList/', veh.body]">{{veh.body.charAt(0).toUpperCase()+veh.body.slice(1)}}</a></td>
         <td><a href [routerLink]="['/vehicle/yearList/', veh.year]">{{veh.year}}</a></td>
-        <td>{{veh.type.charAt(0).toUpperCase()+veh.type.slice(1)}}</td>
+        <td *ngIf="veh.type != null">{{veh.type.charAt(0).toUpperCase()+veh.type.slice(1)}}</td>
+        <td *ngIf="veh.type == null" class="text-muted">No Trim</td>
         <td><a href [routerLink]="['/vehicle/view/', veh._id]">{{veh._reviews.length}}</a></td>
         
       </tr>
